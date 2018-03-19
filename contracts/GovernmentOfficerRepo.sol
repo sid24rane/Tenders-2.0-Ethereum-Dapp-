@@ -14,6 +14,7 @@ contract GovernmentOfficerRepo {
 
     }
 
+    //----do not use---- adds the new contract to same byte code--useless shit.
     function registerOfficer(address _walletAddress, string _email, string _name, 
     string _phoneNumber, string _employeeId) public returns (address) {
         GovernmentOfficer officer = new GovernmentOfficer(_walletAddress, _email, _name, 
