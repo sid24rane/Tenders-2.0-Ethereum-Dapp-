@@ -106,7 +106,7 @@ contract Contract {
         //eventToFire
     }
 
-    function verifyTask(uint _taskIndex) public onlyGovernmentOfficer onlySpecialOfficer {
+    function verifyTask(uint _taskIndex) public onlyGovernmentOfficer {
         if (_taskIndex >= tasks.length) revert();
         Task storage task = tasks[_taskIndex];
 
@@ -139,4 +139,3 @@ contract Contract {
         msg.sender.transfer(amount);
     }
 }
-
