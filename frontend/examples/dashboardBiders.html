@@ -17,9 +17,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/common.js"></script>
+    <!-- <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/common.js"></script>
     <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/util.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/stats.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/stats.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
 
@@ -144,7 +144,7 @@
                                 <td>{{tender.closingDate}}</td>
                                 <td>{{tender.closingDate}}</td>
                                 <td >
-                                    <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
+                                    <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="placeBids">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -285,9 +285,9 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary btn-simple">
-                                        View contractor documents
-                                    <div class="ripple-container"></div></button>
+                <button class="btn btn-primary btn-simple" @click="viewDocs">
+                    View contractor documents
+                </button>
             </div>
         </div>
 
@@ -315,12 +315,12 @@
                                 <td>Subway corridor of Western Highway</td>
                                 <td>22/10/16</td>
                                 <td>Completed</td>
-                                <td class="td-actions text-center">
+                                <td>
                                    <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
                                                             <i class="material-icons">edit</i>
                                                         </button>
                                 </td>
-                                <td class="td-actions text-center">
+                                <td>
                                      <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
                                                             <i class="material-icons">close</i>
                                                         </button>
@@ -469,7 +469,7 @@
                 </div>
                 <button class="btn btn-primary btn-simple">
                     Upload Documents
-                                    <div class="ripple-container"></div></button>
+                </button>
             </div>
         </div>
 
@@ -499,7 +499,14 @@
                 </div>
             </div>
         </div>        
-        <div class="row"><label class="col-md-3"></label> <div class="col-md-9"><div class="form-group form-button"><button type="submit" class="btn btn-fill btn-rose">Place Bid</button></div></div></div>
+        <div class="row">
+            <label class="col-md-3"></label> 
+            <div class="col-md-9">
+                <div class="form-group form-button">
+                    <button type="submit" class="btn btn-fill btn-rose" @click="existingTenders">Place Bid</button>
+                </div>
+            </div>
+        </div>
         </div>     
     </template>
 
@@ -520,7 +527,7 @@
                                                     <th>Name</th>
                                                     <th>Last Bidding Date</th>
                                                     <th>Status</th>
-                                                    <th>More Info</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -529,11 +536,7 @@
                                                     <td>{{tender.name}}</td>
                                                     <td>{{tender.bidCloseDate}}</td>
                                                     <td>{{tender.status}}</td>
-                                                    <td >
-                                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
-                                                            <i class="material-icons">person</i>
-                                                        </button>
-                                                    </td>
+                                                    
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -567,7 +570,7 @@
                                                     <td>22-8-17</td>
                                                     <td>Pending</td>
                                                     <td >
-                                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="activeContractsDetails">
                                                             <i class="material-icons">person</i>
                                                         </button>
                                                     </td>
@@ -579,6 +582,43 @@
                             </div>
     </template>
 
+    <template id="view-submitted-docs">
+         <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            
+            <div class="card-content">
+                <h4 class="card-title">Documents Submitted by Contractord</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>View documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aadhaar Card</td>
+                                <td >
+                                    <button type="button" rel="tooltip"class="btn btn-info" data-original-title="" title="">
+                                        <i class="material-icons">person</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <button class="btn" @click="proposalDetails">
+                    <span class="btn-label">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </span>
+                </button> -->
+            </div>
+
+        </div>
+    </template>
 
 
 <!--   Core JS Files   -->
@@ -601,8 +641,7 @@
 <script src="../assets/js/jquery.bootstrap-wizard.js"></script>
 <!--  Notifications Plugin, full documentation here: http://bootstrap-notify.remabledesigns.com/    -->
 <script src="../assets/js/bootstrap-notify.js"></script>
-<!--   Sharrre Library    -->
-<script src="../assets/js/jquery.sharrre.js"></script>
+
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
 <script src="../assets/js/bootstrap-datetimepicker.js"></script>
 <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
@@ -627,14 +666,6 @@
 <script src="../assets/js/material-dashboard.js%3Fv=1.2.1"></script>
 <script type="text/javascript" src="./bidders.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
 
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-        demo.initVectorMap();
-    });
-</script>
 
 <div class="jvectormap-tip" style="display: none; left: 1187.16px; top: 431px;">India</div></body></html>

@@ -103,8 +103,8 @@
                                                     <td>{{tender.name}}</td>
                                                     <td>{{tender.closingDate}}</td>
                                                     <td>{{tender.bidCount}}</td>
-                                                    <td class="td-actions text-center">
-                                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
+                                                    <td>
+                                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="tenderInfo">
                                                             <i class="material-icons">person</i>
                                                         </button>
                                                     </td>
@@ -140,8 +140,8 @@
                                 <td>{{contract.name}}</td>
                                 <td>{{contract.completionDate}}</td>
                                 <td>{{contract.status}}</td>
-                                <td class="td-actions text-center">
-                                    <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
+                                <td>
+                                    <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="ongoingContractDetails">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -150,6 +150,374 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </template>
+
+    <template id="tender-info">
+         <div>
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">contacts</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Tender Details</h4>
+                <form class="form-horizontal">
+                    
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Name</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highway construction</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Id</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">1231ew434</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highways</label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">H2324serf</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Open</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Services</label>
+                        </div>
+                    </div>    
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">2</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Milestones</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">3</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Submission Closing Date</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Opening Date</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Starting Date</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">23/10/16</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">sdsd343sJSD</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contactor Address</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Hinsfj345323</label>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+        </div>
+        
+         <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Clauses</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Subway corridor of Western Highway</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+         <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Milestones</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>No of Days</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Subway corridor of Western Highway</td>
+                                <td>23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>       
+        </div>       
+    </template>
+
+    <template id="cm-ongoing-contract-details">
+        <div>
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">contacts</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Tender Details</h4>
+                <form class="form-horizontal">
+                    
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Name</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highway construction</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Id</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">1231ew434</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highways</label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">H2324serf</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Open</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Services</label>
+                        </div>
+                    </div>    
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">2</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Milestones</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">3</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Submission Closing Date</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Opening Date</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Starting Date</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">23/10/16</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">sdsd343sJSD</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contactor Address</label>
+                        <div class="col-md-9">
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Hinsfj345323</label>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+        </div>
+        
+         <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Proposal Details</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Clause</th>
+                                <th>Quoted Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Subway corridor of Western Highway</td>
+                                <td>Rs.3000000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn btn-primary btn-simple" @click="viewDocs">
+                    View contractor documents
+                
+                </button>
+            </div>
+        </div>
+
+         <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Milestones</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Subway corridor of Western Highway</td>
+                                <td>22/10/16</td>
+                                <td>Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>       
+        </div>       
+    </template>
+
+    <template id="view-submitted-docs">
+         <div class="card">
+            <div class="card-header card-header-icon" data-background-color="rose">
+                <i class="material-icons">assignment</i>
+            </div>
+            
+            <div class="card-content">
+                <h4 class="card-title">Documents Submitted by Contractord</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>View documents</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Aadhaar Card</td>
+                                <td >
+                                    <button type="button" rel="tooltip"class="btn btn-info" data-original-title="" title="">
+                                        <i class="material-icons">person</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- <button class="btn" @click="proposalDetails">
+                    <span class="btn-label">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </span>
+                </button> -->
+            </div>
+
         </div>
     </template>
 
