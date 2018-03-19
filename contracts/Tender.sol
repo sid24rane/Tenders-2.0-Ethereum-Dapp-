@@ -8,11 +8,13 @@ contract Tender {
     string[] public clauses;
     string[] public constraints;
     uint deadline;
+    uint finalTenderAmount;
 
     struct ContractorProposal {
         address contractorAddress;
         string[] quotationClause;
         uint[] quotationAmount;
+        uint proposalAmount;
         //mapping(string=>uint) quotations;
         string[] constraintDocuments;
         ProposalStatus status;
@@ -34,15 +36,17 @@ contract Tender {
         clauses = _clauses;
         constraints = _constraints;
         deadline = _deadline;
+        finalTenderAmount = 0;
     }
 
     function bid(string token, address _contractorAddress,
-    string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public  {
+    string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public {
         ContractorProposal storage temp = allContractorProposals[allContractorProposals.length++];
         temp.contractorAddress = _contractorAddress;
         for (uint i=0; i < _quotationClause.length; i++) {
             temp.quotationClause[i] = _quotationClause[i];
             temp.quotationAmount[i] = _quotationAmount[i];
+            temp.proposalAmount += _quotationAmount[i];
         }
         for (uint j=0; j < _constraintDocuments.length; j++) {
             temp.constraintDocuments[i] = _constraintDocuments[i];
@@ -52,6 +56,11 @@ contract Tender {
 
     function getProposalCount() public returns (uint256) {
         return allContractorProposals.length;
+    }
+
+    function setTenderAmount(uint amount) public {
+        if (amount != 0 && finalTenderAmount == 0)
+            finalTenderAmount = amount;
     }
 
     function getProposalsToVerify(uint index) returns (string[], string[][], address) {
