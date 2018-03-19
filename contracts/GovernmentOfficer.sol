@@ -2,6 +2,8 @@ pragma solidity ^0.4.20;
 pragma experimental ABIEncoderV2;
 
 import "./Main.sol";
+import "./Tender.sol";
+import "./Contract.sol";
 
 
 contract GovernmentOfficer is Main {
@@ -32,6 +34,32 @@ contract GovernmentOfficer is Main {
         isVerified = false;
     }
 
+    function createTender(address _governmentOfficerAddress, string _tenderName, string[] _clauses, 
+    string[] _constraints, uint _deadline) public returns (address) {
+        Tender newTender = new Tender(address(this), _tenderName, _clauses, 
+        _constraints, _deadline);
+        tenders.push(newTender);
+        return newTender;
+    }
+
+    function createContract(address tenderAddress,
+        address _contractorAddress, 
+        //address _specialOfficerAddress, 
+        string _contractName, 
+        string _contractDocumentUrl, 
+        string[] _taskDescription, 
+        uint[] _deadlineForEachTask, 
+        uint[] _amountForEachTask, 
+        uint _reviewtime) public returns (address) {
+        //first call this function and then updateTenderToContract() function for contract deployment
+        Contract newContract = new Contract(address(this), _contractorAddress, _contractName, 
+        _contractDocumentUrl, _taskDescription, _deadlineForEachTask, 
+        _amountForEachTask, _reviewtime);
+        contracts.push(newContract);
+        updateTenderToContract(tenderAddress, newContract);
+        return newContract;
+    }
+
     function login(address userAddress, string role) public  returns (string) {
     }
 
@@ -51,7 +79,7 @@ contract GovernmentOfficer is Main {
         return pastContracts;
     }
 
-    function markContractCompleted (string token, address contractAddress) public view returns (bool) {
+    function markContractCompleted (string token, address contractAddress) public returns (bool) {
         //remove from contracts and add to pastContracts
         for (uint256 i=0; i < contracts.length; i++) {
             if (contracts[i] == contractAddress) {
@@ -82,7 +110,7 @@ contract GovernmentOfficer is Main {
         return pastTenders;
     }
 
-    function updateTenderToContract(string token, address tenderAddress, address contractAddress) 
+    function updateTenderToContract(address tenderAddress, address contractAddress) 
     public returns (bool) {
         //removeFromMyTender and add to past Tenders
         for (uint i=0; i < tenders.length; i++) {

@@ -1,6 +1,8 @@
 pragma solidity ^0.4.20;
 pragma experimental ABIEncoderV2;
 
+import "./Contractor.sol";
+
 
 contract ContractorRepo {
     address[] contractors; //all contractors verified + unverified
@@ -14,12 +16,20 @@ contract ContractorRepo {
 
     }
 
+    function registerNewContractor(address _walletAddress, string _email, string _name,
+    string _phoneNumber, string _panNumber, string _gstNumber) public returns (address) {
+        Contractor contractor = new Contractor(_walletAddress, _email, _name,
+        _phoneNumber, _panNumber, _gstNumber);
+        this.newContractor(contractor);
+        return contractor;
+    }
+
     function newContractor(address contractorAddress) public {
         contractors.push(contractorAddress);
         verifiedStatus[contractorAddress] = false;
     }
 
-    function verifyContractor(address contractorAddress, address verifierAddress) public returns (){
+    function verifyContractor(address contractorAddress, address verifierAddress) public {
         verifiedContractors.push(contractorAddress);
         verifiedStatus[contractorAddress] = true;
         contratorToVerifier[contractorAddress] = verifierAddress;

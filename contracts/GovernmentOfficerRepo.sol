@@ -1,6 +1,8 @@
 pragma solidity ^0.4.20;
 pragma experimental ABIEncoderV2;
 
+import "./GovernmentOfficer.sol";
+
 
 contract GovernmentOfficerRepo {
     address[] officers; //all officers verified + unverified
@@ -10,6 +12,14 @@ contract GovernmentOfficerRepo {
 
     function GovernmentOfficerRepo() public {
 
+    }
+
+    function registerOfficer(address _walletAddress, string _email, string _name, 
+    string _phoneNumber, string _employeeId) public returns (address) {
+        GovernmentOfficer officer = new GovernmentOfficer(_walletAddress, _email, _name, 
+        _phoneNumber, _employeeId);
+        this.newOfficer(address(officer));
+        return officer;
     }
 
     function newOfficer(address officerToAppend) public {
