@@ -25,9 +25,6 @@ contract Contractor is Main {
         gstNumber = _gstNumber;
     }
 
-    modifier onlyLoggedIn {
-    }
-
     function getAllTenders() public returns (address[]) {
             // from megaTenderrepo
             //defined in TenderRepo.sol

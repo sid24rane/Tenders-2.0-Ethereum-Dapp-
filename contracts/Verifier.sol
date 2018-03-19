@@ -19,25 +19,22 @@ contract Verifier is Main{
         employeeId = _employeeId;
     }
 
-    modifier onlyLoggedIn{
-    }
-
     function login(address userAddress,string role) public  returns (string){
     }
 
     //unverified
-    function getAllUnverifiedGovernmentOfficers(string token) public onlyLoggedIn returns (address[]){
+    function getAllUnverifiedGovernmentOfficers(string token) public  returns (address[]){
     }    
 
-    function getAllUnverifiedContractors(string token) public onlyLoggedIn returns (address[]){
+    function getAllUnverifiedContractors(string token) public  returns (address[]){
     }   
 
-    function getAllUnverifiedDocuments(string token) public onlyLoggedIn returns (string[]) {
+    function getAllUnverifiedDocuments(string token) public  returns (string[]) {
     }
 
 
     // verification
-    function verifyGovernmentOfficer(string token,address govtOfficer) public OnlyLoggedIn returns (bool){
+    function verifyGovernmentOfficer(string token,address govtOfficer) public  returns (bool){
     }
 
     function verifyContractor(string token,) public returns (bool){

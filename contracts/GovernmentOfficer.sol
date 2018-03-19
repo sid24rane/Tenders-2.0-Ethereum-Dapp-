@@ -32,21 +32,18 @@ contract GovernmentOfficer is Main {
         isVerified = false;
     }
 
-    modifier onlyLoggedIn {
-    }
-
     function login(address userAddress, string role) public  returns (string) {
     }
 
-    function getAllContracts(string token) public onlyLoggedIn returns (address[]) {
+    function getAllContracts(string token) public  returns (address[]) {
         //refer contracts.sol
     }
 
-    function getOngoingContracts(string token) public onlyLoggedIn returns (address[]) {
+    function getOngoingContracts(string token) public returns (address[]) {
         //look at contracts.sol
     }
 
-    function getMyContracts(string token) public onlyLoggedIn returns (address[]) {
+    function getMyContracts(string token) public returns (address[]) {
         return contracts;
     }
 
@@ -67,21 +64,21 @@ contract GovernmentOfficer is Main {
         return false;
     }
 
-    function addToMyContracts(string token, address contractAddress) public onlyLoggedIn returns (address) {
+    function addToMyContracts(string token, address contractAddress) public returns (address) {
         //call when createContract button is clicked => web3
         contracts.push(contractAddress);
     }
 
-    function addToMyTenders(string token, address tenderAddress) public onlyLoggedIn returns (address) {
+    function addToMyTenders(string token, address tenderAddress) public returns (address) {
         //look at web3 for address 
         tenders.push(tenderAddress);
     }
 
-    function getMyTenders(string token) public onlyLoggedIn returns (address[]) {
+    function getMyTenders(string token) public returns (address[]) {
         return tenders;
     }
 
-    function getPastTenders(string token) public onlyLoggedIn returns (address[]){
+    function getPastTenders(string token) public returns (address[]){
         return pastTenders;
     }
 
@@ -105,7 +102,7 @@ contract GovernmentOfficer is Main {
         isVerified = true;
     }
 
-    function getQuotations(string token) public onlyLoggedIn returns (address[]) {
+    function getQuotations(string token) public returns (address[]) {
         //look at Tender.sol
     }
 

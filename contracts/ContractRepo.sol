@@ -22,11 +22,11 @@ contract ContractRepo {
         contractMapping[contractToAppend] = ContractStatus.onGoing;
     }
 
-    function getAllContracts() public view returns (address[]){
+    function getAllContracts() public view returns (address[]) {
         return contractAddress;
     }
 
-    function getContractCount() public view returns (uint256){
+    function getContractCount() public view returns (uint256) {
         return contractAddress.length;
     }
 

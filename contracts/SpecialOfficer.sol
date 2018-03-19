@@ -21,10 +21,6 @@ contract SpecialOfficer is Main {
         employeeId = _employeeId;
     }
 
-
-    modifier onlyLoggedIn {
-    }
-
     function login(address userAddress, string role) public  returns (string) {
     }
 
