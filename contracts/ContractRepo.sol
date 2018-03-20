@@ -11,7 +11,7 @@ contract ContractRepo {
         complete
     }
 
-    mapping (address => ContractStatus) public contractMapping;
+    mapping (address=>ContractStatus) public contractMapping;
 
     function ContractRepo() public {
 

@@ -41,9 +41,10 @@ contract Contractor {
         return contracts;
     }
 
-    function addToContracts(address contractAddress) public {
+    function addToContracts(address contractAddress) public returns (bool) {
         contracts.push(contractAddress);
         contractStatus[contractAddress] = true;
+        return true;
     }
 
     function getContractStatus(address contractAddress) public view returns (bool) {
