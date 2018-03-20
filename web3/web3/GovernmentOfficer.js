@@ -6,11 +6,11 @@
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
 	web3.eth.defaultAccount = web3.eth.accounts[0];
-	var TenderRepoContract = web3.eth.contract(PASTE ABI HERE!);
-	var TenderRepo = TenderRepoContract.at('PASTE CONTRACT ADDRESS HERE');
-    console.log(TenderRepo);
+	var GovernmentOfficerContract = web3.eth.contract(PASTE ABI HERE!);
+	var GovernmentOfficer = GovernmentOfficerContract.at('PASTE CONTRACT ADDRESS HERE');
+    console.log(GovernmentOfficer);
 		
-	TenderRepo.getAllTenders((error, result)=>{
+	GovernmentOfficer.getMyContracts(string,(error, result)=>{
         if(!error){
             console.log(result);
         }else{
@@ -18,7 +18,7 @@
         }
     });
 
-    TenderRepo.getTenderCount((error, result)=>{
+    GovernmentOfficer.getPastContracts(string,(error, result)=>{
         if(!error){
             console.log(result);
         }else{
@@ -26,7 +26,15 @@
         }
     });
 
-    TenderRepo.getOngoingTenders(0,(error, result)=>{
+    GovernmentOfficer.getMyTenders(string,(error, result)=>{
+        if(!error){
+            console.log(result);
+        }else{
+           console.error(error);
+        }
+    });
+
+    GovernmentOfficer.getPastTenders(string,(error, result)=>{
         if(!error){
             console.log(result);
         }else{

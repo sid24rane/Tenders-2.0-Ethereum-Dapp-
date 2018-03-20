@@ -11,6 +11,11 @@ Vue.component('existing-tenders', {
       ]
       
     }
+  },
+  methods: {
+    tenderInfo : function(){
+      this.$parent.currentView = 'tender-info';
+    }
   }
 })
 
@@ -26,7 +31,30 @@ Vue.component('ongoing-contracts', {
           }
       ]
     }
+  },
+  methods: {
+    ongoingContractDetails : function(){
+      this.$parent.currentView = 'cm-ongoing-contract-details';
+    }
   }
+})
+
+Vue.component('tender-info', {
+  template: '#tender-info',
+})
+
+Vue.component('cm-ongoing-contract-details', {
+  template: '#cm-ongoing-contract-details',
+  methods: {
+    viewDocs: function(){
+      this.$parent.currentView = 'view-submitted-docs';
+    }
+  }
+  
+})
+
+Vue.component('view-submitted-docs', {
+  template: '#view-submitted-docs',
 })
 
 new Vue({

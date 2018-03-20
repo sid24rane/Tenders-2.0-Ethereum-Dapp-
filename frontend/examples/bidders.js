@@ -13,6 +13,21 @@ Vue.component('existing-tenders', {
         }
       ]
     }
+  },
+    methods: {
+      placeBids : function(){
+        this.$parent.currentView = 'place-bid';
+      }
+    }
+  
+})
+
+Vue.component('place-bid', {
+  template: '#place-bid',
+  methods:{
+    existingTenders : function(){
+      this.$parent.currentView = 'existing-tenders';
+    }
   }
 })
 
@@ -37,8 +52,32 @@ Vue.component('placed-bids', {
 })
 
 Vue.component('active-contracts', {
-  template: '#active-contracts'
+  template: '#active-contracts',
+  methods: {
+    activeContractsDetails: function(){
+      this.$parent.currentView = 'active-contracts-details';
+    }
+  }
 })
+
+Vue.component('active-contracts-details', {
+  template: '#active-contracts-details',
+  methods: {
+    activeContractsDetails: function(){
+      this.$parent.currentView = 'active-contracts-details';
+    },
+    viewDocs: function(){
+      this.$parent.currentView = 'view-submitted-docs';
+    }
+
+  }
+})
+
+Vue.component('view-submitted-docs', {
+  template: '#view-submitted-docs'
+ })
+
+
 
 new Vue({
   el: '#app',

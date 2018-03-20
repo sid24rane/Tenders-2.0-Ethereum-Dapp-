@@ -27,10 +27,10 @@
     <div class="wrapper" id="app">
         <div class="sidebar" data-active-color="rose" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                <a class="simple-text logo-mini">
                     CT
                 </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">Tenders 2.0</a>
+                <a  class="simple-text logo-normal">Tenders 2.0</a>
             </div>
             <div class="sidebar-wrapper">
 
@@ -141,9 +141,8 @@
     </div>
 
 
-
-
-    <template id="create-tender">
+   <template id="create-tender">
+        <div>
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="rose">
                 <i class="material-icons">contacts</i>
@@ -187,116 +186,138 @@
                                 <span class="material-input"></span></div>
                         </div>
                     </div>
+
                     <div class="row">
                         <label class="col-md-3 label-on-left">Type</label>
                         <div class="col-md-9">
-
-                            <div class="btn-group bootstrap-select show-tick">
-                                <button type="button" class="btn dropdown-toggle bs-placeholder select-with-transition" data-toggle="dropdown" role="button" taria-expanded="false"><span class="filter-option pull-left"></span>&nbsp;<span class="bs-caret"><span class="caret"></span></span>
-                                    <div class="ripple-container">
-                                        <div class="ripple ripple-on ripple-out" style="left: 1090px; top: 442px; background-color: rgb(60, 72, 88); transform: scale(21.8476);"></div>
-                                        <div class="ripple ripple-on ripple-out" style="left: 1090px; top: 442px; background-color: rgb(60, 72, 88); transform: scale(21.8476);"></div>
-                                        <div class="ripple ripple-on ripple-out" style="left: 1080px; top: 452px; background-color: rgb(60, 72, 88); transform: scale(21.8476);"></div>
-                                    </div>
-                                </button>
-                                <div class="dropdown-menu open" role="combobox" style="max-height: 266px; overflow: hidden;">
-                                    <ul class="dropdown-menu inner" role="listbox" aria-expanded="false" style="max-height: 266px; overflow-y: auto;">
-                                        <li data-original-index="0"><a tabindex="-1" class="" data-tokens="null" role="option" href="#" aria-disabled="true" aria-selected="false"><span class="text">Open</span><span class="material-icons  check-mark"> done </span></a></li>
-                                        <li data-original-index="1"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Close</span><span class="material-icons  check-mark"> done </span></a></li>
-                                    </ul>
-                                </div>
-                                <select class="selectpicker" data-style="select-with-transition" multiple="" title="Choose City" data-size="7" tabindex="-98">
+                            <div class="form-group">
+                                <select class="form-control">
                                     <option value="open">Open </option>
                                     <option value="close">Close</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
+                        </div>
 
-                        <div class="row">
+                    <div class="row">
                         <label class="col-md-3 label-on-left">Category</label>
                         <div class="col-md-9">
-
-                            <div class="btn-group bootstrap-select show-tick">
-                                <button type="button" class="btn dropdown-toggle bs-placeholder select-with-transition" data-toggle="dropdown" role="button" taria-expanded="false"><span class="filter-option pull-left"></span>&nbsp;<span class="bs-caret"><span class="caret"></span></span>
-                                    <div class="ripple-container">
-                                        <div class="ripple ripple-on ripple-out" style="left: 1090px; top: 442px; background-color: rgb(60, 72, 88); transform: scale(21.8476);"></div>
-                                        <div class="ripple ripple-on ripple-out" style="left: 1090px; top: 442px; background-color: rgb(60, 72, 88); transform: scale(21.8476);"></div>
-                                        <div class="ripple ripple-on ripple-out" style="left: 1080px; top: 452px; background-color: rgb(60, 72, 88); transform: scale(21.8476);"></div>
-                                    </div>
-                                </button>
-                                <div class="dropdown-menu open" role="combobox" style="max-height: 266px; overflow: hidden;">
-                                    <ul class="dropdown-menu inner" role="listbox" aria-expanded="false" style="max-height: 266px; overflow-y: auto;">
-                                        <li data-original-index="0"><a tabindex="-1" class="" data-tokens="null" role="option" href="#" aria-disabled="true" aria-selected="false"><span class="text">Works</span><span class="material-icons  check-mark"> done </span></a></li>
-                                        <li data-original-index="1"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Services</span><span class="material-icons  check-mark"> done </span></a></li>
-                                         <li data-original-index="1"><a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false"><span class="text">Goods</span><span class="material-icons  check-mark"> done </span></a></li>
-                                    </ul>
-                                </div>
-                                <select class="selectpicker" data-style="select-with-transition" multiple="" title="Choose City" data-size="7" tabindex="-98">
+                            <div class="form-group">
+                                <select class="form-control">
                                     <option value="open">Works</option>
                                     <option value="close">Services</option>
                                     <option value="close">Goods</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
-
-
-             <div class="row">
-                        <label class="col-md-3 label-on-left">No of Covers</label>
-                        <div class="col-md-9">
-                            <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                                <input type="text" class="form-control">
-                                <span class="material-input"></span></div>
                         </div>
-                    </div>
-            
-                 <div class="row">
-                        <label class="col-md-3 label-on-left">Milestones Count</label>
-                        <div class="col-md-9">
-                            <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                                <input type="text" class="form-control">
-                                <span class="material-input"></span></div>
-                        </div>
-                    </div>
-
-                      <div class="row">
-                        <label class="col-md-3 label-on-left">Clauses Count</label>
-                        <div class="col-md-9">
-                            <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                                <input type="text" class="form-control">
-                                <span class="material-input"></span></div>
-                        </div>
-                    </div>
                     
-
-                        <div class="row">
+                    <div class="row">
                         <label class="col-md-3 label-on-left">Bid Submission Closing Date</label>
                         <div class="col-md-9">
                             <input type="text" class="form-control datepicker" value="10/10/2016">
                         </div>
                     </div>
 
-                      <div class="row">
+                    <div class="row">
                         <label class="col-md-3 label-on-left">Bid Opening Date</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control datepicker" value="10/10/2016">                           
+                            <input type="text" class="form-control datepicker" value="10/10/2016">
                         </div>
                     </div>
-            <div class="row">
-                <label class="col-md-3"></label>
-                <div class="col-md-9">
-                    <div class="form-group form-button">
-                        <button type="submit" class="btn btn-fill btn-rose">Create</button>
+
+
+                     <div class="row">
+                        <label class="col-md-3 label-on-left">Covers</label>
+                        <div class="col-md-9">
+                            <button class="btn btn-primary btn-simple" @click="addCover">
+                                Add
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
                     </div>
+                    <div class="row">
+                        <label class="col-md-3 label-on-left"></label>
+                        <div class="col-md-9">
+
+                            <div v-for="(input,index) in coverinputs" class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input type="text" class="form-control" placeholder="Cover name/description">
+                                <span class="material-input"></span></div>
+                        </div>
+                        </div>
+      
+      
+      <div class="row">
+                        <label class="col-md-3 label-on-left">Clauses</label>
+                        <div class="col-md-9">
+                            <button class="btn btn-primary btn-simple" @click="addClause">
+                                Add
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                                                <label class="col-md-3 label-on-left"></label>
+                                                <div class="col-md-9">
+
+                            <div  v-for="(input,index) in clauseinputs" class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input type="text" class="form-control" placeholder="Clause name/description">
+                                <span class="material-input"></span></div>
+                    </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-3 label-on-left">Milestones</label>
+                        <div class="col-md-9">
+                            <button class="btn btn-primary btn-simple" @click="addMilestones">
+                                Add 
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <label class="col-md-3 label-on-left"></label>
+                    <div class="col-md-9"> 
+                        <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr v-for="(input,index) in milestonesinputs">
+                                <td style="border-width: 0;"><div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input type="text" class="form-control" placeholder="Task name">
+                                <span class="material-input"></span></div>    
+                                </div></td>
+                                <td style="border-width: 0;">
+                                    <div class="form-group label-floating is-empty">
+                                <label class="control-label"></label>
+                                <input type="text" class="form-control" placeholder="Number of days">
+                                <span class="material-input"></span></div>    
+                                </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+                    </div>
+                    </div>
+
+
+                    <div class="row">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <div class="form-group form-button">
+                                <button type="submit" class="btn btn-fill btn-rose">Create</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
-        </div>
+    </div>
     </template>
 
     <template id="expired-tenders">
@@ -323,8 +344,8 @@
                                 <td>Construction of new highway in Mira Road</td>
                                 <td>22-8-17</td>
                                 <td>43</td>
-                                <td class="td-actions text-center">
-                                    <button type="button" rel="tooltip" data-toggle="modal" data-target="#myModal" class="btn btn-info" data-original-title="" title="">
+                                <td >
+                                    <button type="button" rel="tooltip" data-toggle="modal" data-target="#myModal" class="btn btn-info" data-original-title="" title="" @click="biddingList">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -360,7 +381,7 @@
                                 <td>Construction of new highway in Mira Road</td>
                                 <td>22-8-17</td>
                                 <td>2</td>
-                                <td class="td-actions text-center">
+                                <td >
                                     <button type="button" rel="tooltip" data-toggle="modal" data-target="#myModal" class="btn btn-info" data-original-title="" title="">
                                         <i class="material-icons">person</i>
                                     </button>
@@ -397,8 +418,8 @@
                                 <td>Construction of new highway in Mira Road</td>
                                 <td>22-8-17</td>
                                 <td>43</td>
-                                <td class="td-actions text-center">
-                                    <button type="button" rel="tooltip" data-toggle="modal" data-target="#myModal" class="btn btn-info" data-original-title="" title="">
+                                <td >
+                                    <button type="button" rel="tooltip" data-toggle="modal" data-target="#myModal" class="btn btn-info" data-original-title="" title="" @click="ongoingContractDetails">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -433,8 +454,8 @@
                                 <td class="text-center">1</td>
                                 <td>x34yuhasduhiw34nk</td>
                                 <td>Rs.3000000</td>
-                                <td class="td-actions text-center">
-                                    <button type="button" rel="tooltip"class="btn btn-info" data-original-title="" title="">
+                                <td >
+                                    <button type="button" rel="tooltip"class="btn btn-info" data-original-title="" title="" @click="proposalDetails">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -470,15 +491,15 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary btn-simple">
-                                        View contractor documents
-                                    <div class="ripple-container"></div></button>
+                <button class="btn btn-primary btn-simple" @click="viewDocs">
+                    View contractor documents                                    
+                </button>
             </div>
             <div class="row">
                 <label class="col-md-3"></label>
                 <div class="col-md-9">
                     <div class="form-group form-button">
-                        <button type="submit" class="btn btn-fill btn-rose">Create Contract</button>
+                        <button type="submit" class="btn btn-fill btn-rose" @click="contractDetails">Create Contract</button>
                     </div>
                 </div>
             </div>
@@ -491,6 +512,7 @@
             <div class="card-header card-header-icon" data-background-color="rose">
                 <i class="material-icons">assignment</i>
             </div>
+            
             <div class="card-content">
                 <h4 class="card-title">Documents Submitted by Contractord</h4>
                 <div class="table-responsive">
@@ -504,7 +526,7 @@
                         <tbody>
                             <tr>
                                 <td>Aadhaar Card</td>
-                                <td class="td-actions text-center">
+                                <td >
                                     <button type="button" rel="tooltip"class="btn btn-info" data-original-title="" title="">
                                         <i class="material-icons">person</i>
                                     </button>
@@ -513,7 +535,13 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- <button class="btn" @click="proposalDetails">
+                    <span class="btn-label">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                    </span>
+                </button> -->
             </div>
+
         </div>
     </template>
 
@@ -651,9 +679,9 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary btn-simple">
-                                        View contractor documents
-                                    <div class="ripple-container"></div></button>
+                <button class="btn btn-primary btn-simple" @click="viewDocs">
+                    View contractor documents
+                </button>
             </div>
         </div>
 
@@ -684,8 +712,17 @@
                     </table>
                 </div>
             </div>
-        </div>        
-        <div class="row"><label class="col-md-3"></label> <div class="col-md-9"><div class="form-group form-button"><button type="submit" class="btn btn-fill btn-rose">Create</button></div></div></div>
+        </div>    
+
+        <div class="row">
+            <label class="col-md-3"></label> 
+            <div class="col-md-9">
+                <div class="form-group form-button">
+                    <button type="submit" class="btn btn-fill btn-rose" @click="expiredTenders">Create</button>
+                </div>
+            </div>
+        </div>
+
         </div>               
     </template>
 
@@ -693,7 +730,7 @@
 
     <template id="ongoing-contracts-details">
         
-         <div>
+    <div>
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="rose">
                 <i class="material-icons">contacts</i>
@@ -825,9 +862,10 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-primary btn-simple">
-                                        View contractor documents
-                                    <div class="ripple-container"></div></button>
+                <button class="btn btn-primary btn-simple" @click="viewDocs">
+                    View contractor documents
+                
+                </button>
             </div>
         </div>
 
@@ -854,7 +892,7 @@
                                 <td>Subway corridor of Western Highway</td>
                                 <td>22/10/16</td>
                                 <td>Completed</td>
-                                <td class="td-actions text-center">
+                                <td >
                                     <button type="button" rel="tooltip" data-toggle="modal" data-target="#smallAlertModalTransfer" class="btn btn-info" data-original-title="" title="">
                                         <i class="material-icons">person</i>
                                     </button>
