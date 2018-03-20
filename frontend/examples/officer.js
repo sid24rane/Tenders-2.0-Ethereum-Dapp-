@@ -4,31 +4,95 @@ Vue.component('create-tender', {
       return {
       coverinputs: [],
       clauseinputs:[],
-      milestonesinputs:[]
+      coverinputsArr: [], // arrays are for sending to chain
+      clauseinputsArr:[],
+      milestonesinputs:[],
+      taskName: [],
+      noOfDays: [],
+      name:'',
+      id:'',
+      organisationChain:'',
+      referenceNumber:0,
+      type:'',
+      category:'',
+      closingDate:'',
+      openingDate:''
     }
   },
   methods: {
     addCover(event) {
       event.preventDefault();
-      this.coverinputs.push({
-        one: '',
-        two: ''
-      })
+      this.coverinputs.push({name:''});
     },
     addClause(event){
       event.preventDefault();
-      this.clauseinputs.push({
-        one:'',
-        two:''
-      })
+      this.clauseinputs.push({name:''});
     },
     addMilestones(event){
       event.preventDefault();
       this.milestonesinputs.push({
-        one:'',
-        two:''
-      })
+        taskName:'',
+        noOfDays:''
+      });
+
+
+    },
+    createObject(event){
+      event.preventDefault();
+      this.fillArrays();
+      var newTender = {
+        
+        taskName: this.taskName,
+        noOfDays: this.noOfDays,
+        coverinputsArr:this.coverinputsArr,
+        clauseinputsArr:this.clauseinputsArr,
+        name: this.name,
+        id: this.id,
+        orgchain: this.organisationChain,
+        refno: this.referenceNumber,
+        type:this.type,
+        category:this.category,
+        cdate:this.closingDate,
+        odate:this.openingDate
+      };
+      this.clearFields();
+      console.log(JSON.stringify(newTender));
+      
+    },
+    clearFields(){
+      this.coverinputs = [];
+      this.clauseinputs=[];
+      this.clauseinputsArr=[];
+      this.coverinputsArr= [];
+      this.milestonesinputs=[];
+      this.taskName= [];
+      this.noOfDays= [];
+      this.name='';
+      this.id='';
+      this.organisationChain='';
+      this.referenceNumber=0;
+      this.type='';
+      this.category='';
+      this.closingDate='';
+      this.openingDate='';
+    },
+    fillArrays(){
+      for(i=0;i<this.milestonesinputs.length;i++){
+        
+        this.taskName.push(this.milestonesinputs[i].taskName);
+        this.noOfDays.push(this.milestonesinputs[i].noOfDays);
+      }
+
+      for(i=0;i<this.coverinputs.length;i++){
+        this.coverinputsArr.push(this.coverinputs[i].name);
+      }
+
+      for(i=0;i<this.clauseinputs.length;i++){
+        this.clauseinputsArr.push(this.clauseinputs[i].name);
+      }
     }
+
+
   }
 })
 
@@ -48,8 +112,21 @@ Vue.component('ongoing-contracts', {
 
 Vue.component('active-contracts', {
   template: '#active-contracts',
+  data: function(){
+    return {
+      activeContracts: [
+          {
+            name:"highway construction",
+            closingDate: "12/98/25",
+            bidCount: "97"
+          }
+      ]
+    }
+  },
   methods: {
-    ongoingContractDetails : function(){
+    ongoingContractDetails : function(name){
+      console.log("name"+ "  "+name);
+      globalTenderName = name;
       this.$parent.currentView = 'ongoing-contracts-details';
     }
   }
@@ -57,6 +134,11 @@ Vue.component('active-contracts', {
 
 Vue.component('ongoing-contracts-details', {
   template: '#ongoing-contracts-details',
+  data :function(){
+    return {
+       tenderName : globalTenderName
+    }
+  },
   methods: {
     viewDocs: function(){
       this.$parent.currentView= 'view-submitted-docs';
@@ -114,7 +196,8 @@ new Vue({
     isCreate : false,
     isExpiredTender: false,
     isOnContract : false,
-    isActiveContract: true
+    isActiveContract: true,
+    
   },
   methods: {
     createTender: function(){
@@ -148,3 +231,5 @@ new Vue({
     logout: function(){}
   }
 })
+
+var globalTenderName='';
