@@ -1911,3 +1911,24 @@ var FactoryGovernmentOfficer = [
 		"type": "constructor"
 	}
 ];
+
+var tempAbi = [
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "myFunction",
+		"outputs": [
+			{
+				"name": "myNumber",
+				"type": "uint256"
+			},
+			{
+				"name": "myString",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+];

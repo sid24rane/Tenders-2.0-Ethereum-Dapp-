@@ -19,14 +19,26 @@
         // set the provider you want from Web3.providers
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
-	//web3.eth.defaultAccount = web3.eth.accounts[0];
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+    console.log("account :" + web3.eth.accounts[0]);
     var OfficerRepoContract = web3.eth.contract(FactoryGovernmentOfficer);
-    var OfficerRepo = OfficerRepoContract.at("0x4d7c7dd6da85c81ae514e42f1c36a167fdf11fdd27d2e077be57636bd06e9a83");
+    var OfficerRepo = OfficerRepoContract.at("0xaa588d3737b611bafd7bd713445b314bd453a5c8");
     
     console.log("yahoo : "+ JSON.stringify(OfficerRepo));
-    var officerAddress = OfficerRepo.returnInt.call();
+    console.log("call " + OfficerRepo.returnInt.call());
+    var officerAddress = OfficerRepo.returnInt.call((err,res)=>{
+        console.log(res);
+    });
     //var officerAddress = OfficerRepo.returnString.call();
-    console.log(officerAddress);
+    console.log("default : " + officerAddress);
+
+
+    var MyContract = web3.eth.contract(tempAbi);
+    var add = MyContract.at("0x30753e4a8aad7f8597332e813735def5dd395028");
+    add.myFunction().call()
+    .then(console.log);
+
+
     
     // var OfficerContract = web3.eth.contract(GovernmentOfficer);
     // var Officer = OfficerRepoContract.at(officerAddress);

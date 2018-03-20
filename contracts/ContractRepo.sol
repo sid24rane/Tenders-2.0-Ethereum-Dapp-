@@ -17,9 +17,10 @@ contract ContractRepo {
 
     }
 
-    function addToContracts(address contractToAppend) public {
+    function addToContracts(address contractToAppend) public returns (bool) {
         contractAddress.push(contractToAppend);
         contractMapping[contractToAppend] = ContractStatus.onGoing;
+        return true;
     }
 
     function getAllContracts() public view returns (address[]) {
