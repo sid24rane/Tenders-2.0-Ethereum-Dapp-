@@ -10,20 +10,20 @@ contract Tender {
     //string public tenderRefNum;
     //string public tenderType;
     //string public tenderCategory;
-    uint public bidSubmissionClosingDate;
-    uint public bidOpeningDate;
-    uint public covers;
+    uint256 public bidSubmissionClosingDate;
+    uint256 public bidOpeningDate;
+    uint256 public covers;
     string[] public clauses;
     string[] public taskName;
-    uint[] public taskDays;
+    uint256[] public taskDays;
     string[] public constraints;
     uint finalTenderAmount;
 
     struct ContractorProposal {
         address contractorAddress;
         string[] quotationClause;
-        uint[] quotationAmount;
-        uint proposalAmount;
+        uint256[] quotationAmount;
+        uint256 proposalAmount;
         //mapping(string=>uint) quotations;
         string[] constraintDocuments;
         ProposalStatus status;
@@ -42,9 +42,13 @@ contract Tender {
         
     }
 
+    function getTenderName() public view returns (string) {
+        return tenderName;
+    }
+
     function setTenderBasic(address _governmentOfficerAddress, string _tenderName, string _tenderId, 
     //string _organisationChain, string _tenderRefNum,
-    uint _bidSubmissionClosingDate, uint _bidOpeningDate, uint _covers) public {
+    uint256 _bidSubmissionClosingDate, uint256 _bidOpeningDate, uint256 _covers) public {
         governmentOfficerAddress = _governmentOfficerAddress;   
         tenderName = _tenderName;
         tenderId = _tenderId;
@@ -59,7 +63,8 @@ contract Tender {
     }
     
     function setTenderAdvanced(string[] _clauses,
-    string[] _taskName, uint[] _taskDays, string[] _constraints) public {
+    string[] _taskName, uint256[] _taskDays,
+    string[] _constraints) public {
         clauses = _clauses;
         taskName = _taskName;
         taskDays = _taskDays;
@@ -72,12 +77,12 @@ contract Tender {
         bidSubmissionClosingDate, bidOpeningDate, covers);
     }
 
-    function getTenderAdvanced() public view returns (string[], string[], uint[], string[]) {
+    function getTenderAdvanced() public view returns (string[], string[], uint256[], string[]) {
         return (clauses, taskName, taskDays, constraints );
     }
 
     function bid(address _contractorAddress,
-    string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public returns (bool) {
+    string[] _quotationClause, uint256[] _quotationAmount, string[] _constraintDocuments) public returns (bool) {
         ContractorProposal storage temp = allContractorProposals[allContractorProposals.length++];
         temp.contractorAddress = _contractorAddress;
         for (uint i=0; i < _quotationClause.length; i++) {
@@ -92,7 +97,7 @@ contract Tender {
         return true;
     }  
 
-    function getBiddindCloseDate() public returns (uint) {
+    function getBiddindCloseDate() public returns (uint256) {
         return bidSubmissionClosingDate;
     }
 
@@ -100,7 +105,7 @@ contract Tender {
         return allContractorProposals.length;
     }
 
-    function setTenderAmount(uint amount) public {
+    function setTenderAmount(uint256 amount) public {
         if (amount != 0 && finalTenderAmount == 0)
             finalTenderAmount = amount;
     }
@@ -123,6 +128,11 @@ contract Tender {
 
     function rejectProposal(address contractorAddress) public {
         isProposalVerified[contractorAddress] = ProposalStatus.rejected;
+    }
+
+    function getProposal(uint256 index) public view returns (address, string) {
+        if (index > allContractorProposals.length) revert();
+        return (allContractorProposals[index].contractorAddress, allContractorProposals[index].proposalAmount);
     }
 
     function getVerifiedProposals(uint index) public returns (string[], string[][], address, uint[]) {

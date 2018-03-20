@@ -8,15 +8,15 @@ if (typeof web3 !== 'undefined') {
     web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
 
-function register(name, email, walletAddress, employeeId, contact) {
+function registerGovernmentOfficer(name, email, walletAddress, employeeId, contact) {
     var success = false;
-    FactoryGovernmentOfficerInstance.registerOfficer.call(walletAddress,email,name,contact,employeeId,{gas:30000})
+    FactoryGovernmentOfficerInstance.registerOfficer.sendTransaction(walletAddress,email,name,contact,employeeId,{gas:30000})
     .then((err, nodeAddress) => {
         if(err) console.log(err);
         console.log("New Officer Address : " + nodeAddress);
         success = true;
         governmentOfficerNodeAddress = nodeAddress;
-        GovernmentOfficerRepoInstance.newOfficer.call(governmentOfficerWalletAddress, nodeAddress, {gas:500000}).then((err,res)=>{
+        GovernmentOfficerRepoInstance.newOfficer.sendTransaction(governmentOfficerWalletAddress, nodeAddress, {gas:500000}).then((err,res)=>{
             if(err) console.log(err);
             console.log(" Added to MegaOfficerRepo : " + res);
         })
@@ -25,18 +25,19 @@ function register(name, email, walletAddress, employeeId, contact) {
 }
 
 //TODO : take params in this function and update Tender.sol and FactoryTender.sol
-function createTender(governmentOfficerNodeAddress, tenderName, id, organisationChain, 
-    referenceNumber, type, category, bidSubmissionClosingDate, bidOpeningDate, covers, 
+function createTender(governmentOfficerNodeAddress, tenderName, id,
+    bidSubmissionClosingDate, bidOpeningDate, covers, 
     clauses, taskName, taskDays) {
     var success = false;
     let governmentOfficerNodeAddress = GovernmentOfficerRepo.getNodeAddress.call(governmentOfficerWalletAddress);
-    FactoryTenderInstance.createTender.call(governmentOfficerNodeAddress, tenderName, id, organisationChain, 
-        referenceNumber, type, category, bidSubmissionClosingDate, bidOpeningDate, covers, 
-        clauses, taskName, taskDays, {gas:500000}).then((err, address) => {
+    FactoryTenderInstance.createTender.sendTransaction(governmentOfficerNodeAddress, tenderName, id,
+        bidSubmissionClosingDate, bidOpeningDate, covers, clauses, 
+        taskName, taskDays, 
+        {gas:500000}).then((err, address) => {
             if(err) console.log(err);
             console.log("New Tender Address : "+ address);
             success = true;
-            TenderRepoInstance.newTender.call(address, {gas:500000}).then((err, res)=>{
+            TenderRepoInstance.newTender.sendTransaction(address, {gas:500000}).then((err, res)=>{
                 if(err) console.log(err);
                 console.log("Added to mega tender repo " + res);
             })
@@ -57,7 +58,7 @@ function updateTenderToContract (governmentOfficerNodeAddress,
 
     var success = false;
     let governmentOfficerNodeAddress = GovernmentOfficerRepo.getNodeAddress.call(governmentOfficerWalletAddress);
-    FactoryContractInstance.createContract.call(governmentOfficerNodeAddress, contractorAddress, contractName, 
+    FactoryContractInstance.createContract.sendTransaction(governmentOfficerNodeAddress, contractorAddress, contractName, 
         tenderId,completionTime, constraints, finalQuotationAmount, taskDescription, deadlineForEachTask, 
         amountForEachTask, reviewtime, 
         {gas:500000}).then((err, address) => {
@@ -70,8 +71,8 @@ function updateTenderToContract (governmentOfficerNodeAddress,
                 if(err) console.log(err);
                 console.log("Added to mega contract repo " + res);
             })
-            governmentOfficerNodeAddress.updateTenderToContract.call(tenderAddress,address);
-            contractorAddress.addToContracts.call(address, {gas:500000}, (err, res) => {
+            governmentOfficerNodeAddress.updateTenderToContract.sendTransaction(tenderAddress,address);
+            contractorAddress.addToContracts.sendTransaction(address, {gas:500000}, (err, res) => {
                 if(err) {
                     console.log(err);
                     return;
@@ -165,23 +166,24 @@ function getExpiredTenders() {
                 }
                 tenderBasicInfo = res;
             });
-            var tempName = tenderBasicInfo[1];
+            var tempName = tenderBasicInfo.tenderName;
             var bidCount = tempAddress.getProposalCount.call({gas : 5000000});
             var tempDate = tempAddress.getBiddindCloseDate.call({gas : 5000000});
 
             var tenderObj = {};
             tenderObj.name = tempName;
             tenderObj.closingDate = tempDate;
-            tenderObj.bids = bidCount;
-            existingTenderInfo.push(tenderObj);
+            tenderObj.bidCount = bidCount;
+            tenderObj.address = tempAddress;
+            expiredTenderInfo.push(tenderObj);
         }
-        console.log(existingTenderInfo);
-        return existingTenderInfo;
+        console.log(expiredTenderInfo);
+        return expiredTenderInfo;
     })
 }
 
 function verifyTask(contractAddress, index) {
-    contractAddress.verifyTask.call(index, {gas:500000}, (err, res)=> {
+    contractAddress.verifyTask.sendTransaction(index, {gas:500000}, (err, res)=> {
         if(err) {
             console.log(err);
             return;
@@ -191,19 +193,19 @@ function verifyTask(contractAddress, index) {
 }
 
 function updateContractStatusToComplete(contractAddress) { 
-    governmentOfficerNodeAddress.markContractCompleted.call(contractAddress, {gas:500000}, (err, res) => {
+    governmentOfficerNodeAddress.markContractCompleted.sendTransaction(contractAddress, {gas:500000}, (err, res) => {
         if(err) {
             console.log(err);
             return;
         }
-        ContractRepoInstance.updateContractStatusToComplete.call(contractAddress, {gas:50000},(error,result)=>{
+        ContractRepoInstance.updateContractStatusToComplete.sendTransaction(contractAddress, {gas:50000},(error,result)=>{
             if(error){
                 console.log(error);
                 return;
             }
             console.log(" Updated contract Status in ContractRepo : " + result);
             var contractorAddress = contractAddress.contractorAddress;
-            contractorAddress.changeContractStatus.call(contractAddress, {gas:500000}, (err, res) => {
+            contractorAddress.changeContractStatus.sendTransaction(contractAddress, {gas:500000}, (err, res) => {
                 if(err){
                     console.log(err);
                     return;
@@ -239,3 +241,10 @@ function getContractInfo(contractAddress) {
     console.log("Tender Basic Obj : " + JSON.stringify(tempObject));
     return tempObject;
 }
+//getAllBidsOfAn ExpiredTender ==> return 
+function getAllBids(expiredTenderAddress) {
+    
+}
+
+//get All Proposals of a Bid
+//verify

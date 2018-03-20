@@ -18,7 +18,7 @@ contract FactoryContract {
         string[] _taskDescription, 
         uint[] _deadlineForEachTask, 
         uint[] _amountForEachTask, 
-        uint _reviewtime) public returns (address) {
+        uint _reviewtime) public payable returns (address) {
         
         Contract newContract = new Contract();
         
