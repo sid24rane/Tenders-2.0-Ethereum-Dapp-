@@ -90,7 +90,6 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Closing Date</th>
                                                     <th>Number of Bids</th>
@@ -99,7 +98,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="tender in existingTenders">
-                                                    <td class="text-center">1</td>
                                                     <td>{{tender.name}}</td>
                                                     <td>{{tender.closingDate}}</td>
                                                     <td>{{tender.bidCount}}</td>
@@ -127,7 +125,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
                                 <th>Name</th>
                                 <th>Expected Completion Date</th>
                                 <th>Status</th>
@@ -136,7 +133,6 @@
                         </thead>
                         <tbody>
                             <tr v-for="contract in ongoingContracts">
-                                <td class="text-center">1</td>
                                 <td>{{contract.name}}</td>
                                 <td>{{contract.completionDate}}</td>
                                 <td>{{contract.status}}</td>
