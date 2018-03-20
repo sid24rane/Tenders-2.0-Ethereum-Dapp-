@@ -127,7 +127,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Expected Completion Date</th>
-                                <th>Status</th>
+                                <th>Quotation Amount</th>
                                 <th>More Info</th>
                             </tr>
                         </thead>
@@ -135,7 +135,7 @@
                             <tr v-for="contract in ongoingContracts">
                                 <td>{{contract.name}}</td>
                                 <td>{{contract.completionDate}}</td>
-                                <td>{{contract.status}}</td>
+                                <td>{{contract.finalQuotationAmount}}</td>
                                 <td>
                                     <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="contract.address" v-on:click="ongoingContractDetails($event)">
                                         <i class="material-icons">person</i>
@@ -202,27 +202,6 @@
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Opening Date</label>
                         <div class="col-md-9">
                             <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidOpeningDate}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Starting Date</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{contractStartingDate}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{verifierAddress}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contactor Address</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{contractorAddress}}</label>
                         </div>
                     </div>
 
@@ -307,9 +286,9 @@
 
 
                     <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Quotation Amount</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{coverCount}}</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{finalQuotationAmount}}</label>
                         </div>
                     </div>
 
@@ -322,31 +301,17 @@
 
 
                     <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Submission Closing Date</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidSubmissionClosingDate}}</label>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Opening Date</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidOpeningDate}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Starting Date</label>
                         <div class="col-md-9">
                             <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{contractStartingDate}}</label>
                         </div>
                     </div>
 
+                    
                     <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
+                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Completion Date</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{verifierAddress}}</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{contractCompletionDate}}</label>
                         </div>
                     </div>
 
@@ -366,19 +331,17 @@
                 <i class="material-icons">assignment</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Proposal Details</h4>
+                <h4 class="card-title">Constraints details</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Clause</th>
-                                <th>Quoted Amount</th>
+                                <th>Constraints</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="clause in clauses">
                                 <td>{{clause.name}}</td>
-                                <td>{{clause.amount}}</td>
                             </tr>
                         </tbody>
                     </table>

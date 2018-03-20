@@ -10,7 +10,7 @@ function getUnverifiedOfficers() {
             var address = GovernmentOfficerRepoInstance.getUnverifiedOfficers.call(index,{gas:500000});
             var officerObject = {};
             officerObject.name = address.name;
-            officerObject.employeeId = address.employeeId;
+            officerObject.empId = address.employeeId;
             officerObject.address = address;
             unverifiedOfficersInfo.push(officerObject);
         }    
@@ -20,7 +20,7 @@ function getUnverifiedOfficers() {
 }
 
 function acceptGovernmentOfficer(officerAddress, verifierAddress) {
-    GovernmentOfficerRepoInstance.verifyOfficer.call(officerAddress, verifierAddress, {gas:5000000}, (err,res)=>{
+    GovernmentOfficerRepoInstance.verifyOfficer.call(officerObjectAddress, verifierAddress, {gas:5000000}, (err,res)=>{
         if(err){
             console.log(err);
             return 0;
@@ -64,7 +64,7 @@ function getUnverifiedContractors() {
             var address = ContractorsRepoInstance.getUnverifiedContractors.call(index,{gas:500000});
             var contractorObject = {};
             contractorObject.name = address.name;
-            contractorObject.employeeId = address.gstNumber;
+            contractorObject.gstNumber = address.gstNumber;
             contractorObject.address = address;
             unverifiedContractorsInfo.push(officerObject);
         }    

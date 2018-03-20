@@ -1,13 +1,11 @@
+var current_tender_address = "";
+var current_contract_address = "";
+
 Vue.component('existing-tenders', {
   template: '#existing-tenders',
   data: function(){
     return {
-      existingTenders: [{
-        address:'sdsd244',
-        name:'sdsd',
-        closingDate:'23/12/34',
-        bidCount:23
-      }]      
+      existingTenders: []      
     }
   },
   mounted(){
@@ -19,6 +17,7 @@ Vue.component('existing-tenders', {
       event.preventDefault();
       var tender_address = event.srcElement.id;
       console.log(tender_address);
+      current_tender_address = tender_address;
     }
   }
 })
@@ -27,40 +26,18 @@ Vue.component('ongoing-contracts', {
   template: '#ongoing-contracts',
   data: function(){
     return {
-      ongoingContracts:[
-          {
-            name: 'ghar ka kaam',
-            completionDate: '12/2/45',
-            status: 'ho gaya',
-            address:'2jksnf2434'
-          }
-      ],
-      name:'highway',
-      id:'223',
-      coverCount:21,
-      milestoneCount:5,
-      bidSubmissionClosingDate:'22/13/11',
-      bidOpeningDate:'23/1/34',
-      contractStartingDate:'24/45/45',
-      verifierAddress:'23efks45',
-      contractorAddress:'244jksbfu45',
-      clauses:[{
-        name:'LOL'
-      },{
-        name:'sdj'
-      }],
-      milestones:[{
-        name:'lol',
-        noOfDays:23
-      }]
-
+      ongoingContracts:[]
     }
+  },
+  mounted(){
+    this.ongoingContracts = getOngoingContracts();
   },
   methods: {
     ongoingContractDetails : function(event){
       this.$parent.currentView = 'cm-ongoing-contract-details';
-       event.preventDefault();
+      event.preventDefault();
       var contract_address = event.srcElement.id;
+      current_contract_address = contract_address;
       console.log(contract_address);
     }
   }
@@ -70,29 +47,43 @@ Vue.component('tender-info', {
   template: '#tender-info',
   data:function(){
     return{
-      name:'highway',
-      id:'223',
-      coverCount:21,
-      milestoneCount:5,
-      bidSubmissionClosingDate:'22/13/11',
-      bidOpeningDate:'23/1/34',
-      contractStartingDate:'24/45/45',
-      verifierAddress:'23efks45',
-      contractorAddress:'244jksbfu45',
-      clauses:[{
-        name:'LOL'
-      },{
-        name:'sdj'
-      }],
-      milestones:[{
-        name:'lol',
-        noOfDays:23
-      }]
+      name:'',
+      id:'',
+      coverCount:0,
+      milestoneCount:0,
+      bidSubmissionClosingDate:'',
+      bidOpeningDate:'',
+      clauses:[],
+      milestones:[]
     }
   },
   mounted(){
-    // get tender address
-    //call
+    var res = getTenderInfo(current_tender_address);
+    var basic = res.basic;
+    var adv = res.advanced;
+    this.name = basic.tenderName;
+    this.id = basic.tenderId;
+    this.coverCount = basic.covers;
+    this.milestoneCount = advanced.taskName.length;
+    this.bidSubmissionClosingDate = basic.bidSubmissionClosingDate;
+    this.bidOpeningDate = basic.bidOpeningDate;
+    
+    var clauses = advanced.clauses;
+    var len = clauses.length;
+    for(var i=0;i<len;i++){
+      var str = clauses[i];
+      this.clauses.push({name:str});
+    }
+
+    var tasks = advanced.taskName;
+    var tdays = advanced.taskDays;
+    var tlen = tasks.length;
+    for(var i =0;i<tlen;i++){
+      this.milestones.push({
+        name:tasks[i],
+        noOfDays:tdays[i]
+      });
+    }
   }
 })
 
@@ -100,28 +91,52 @@ Vue.component('cm-ongoing-contract-details', {
   template: '#cm-ongoing-contract-details',
   data:function(){
     return{
-      name:'highway',
-      id:'223',
-      coverCount:21,
-      milestoneCount:5,
-      bidSubmissionClosingDate:'22/13/11',
-      bidOpeningDate:'23/1/34',
-      contractStartingDate:'24/45/45',
-      verifierAddress:'23efks45',
-      contractorAddress:'244jksbfu45',
-      clauses:[{
-        name:'LOL',
-        amount:5000
-      },{
-        name:'sdj',
-        amount:65451
-      }],
-      milestones:[{
-        name:'lol',
-        deadline:'22/10/10',
-        status:'completed'
-      }]
+      name:'',
+      id:'',
+      contractCompletionDate:'',
+      milestoneCount:0,
+      finalQuotationAmount:0,
+      contractStartingDate:'',
+      contractorAddress:'',
+      clauses:[],
+      milestones:[]
     }
+  },
+  mounted(){
+    var res = getOngoingContractDetails(current_contract_address);
+    var basic = res.basic;
+    var advanced = res.advanced;
+    this.name = advanced.contractName;
+    this.id = basic.tenderId;
+    this.milestoneCount = advanced.tasks.length;
+    this.contractStartingDate = basic.creationDate;
+    this.contractorAddress = basic.contractorAddress;
+    this.finalQuotationAmount = advanced.finalQuotationAmount;
+    this.contractCompletionDate = basic.CompletionDate;
+
+
+    var constraints = advanced.constraints;
+    var len = constraints.length;
+
+    for(var i=0;i<len;i++){
+      this.clauses.push({
+        name:constraints[i]
+      });
+    }
+
+ // ERROR YENAR
+   var tasks = res.tasks;
+   var tlen = tasks.length;
+   for(var i=0 ;i<tlen;i++){
+      var obj = tasks[i];
+      this.milestones.push({
+          name:obj.description,
+          deadline:obj.deadlineTime,
+          status:obj.status
+      });
+   }
+
+
   },
   methods: {
     viewDocs: function(){

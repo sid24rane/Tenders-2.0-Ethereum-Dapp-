@@ -11,9 +11,10 @@ function getExistingTenders(){
             var tempAddress = TenderRepoInstance.getOngoingTenders.call(i);
             var tempDate = tempAddress.getBiddindCloseDate.call({gas : 5000000});
             var noOfBids = tempAddress.getProposalCount.call({gas : 5000000});
-
+            var tempName = tempAddress.getTenderName.call({gas:5000000})     
             var tenderObj = {};
-            tenderObj.name = tempAddress;
+            tenderObj.address = tempAddress;
+            tenderObj.name = tempName;
             tenderObj.closingDate=tempDate;
             tenderObj.bidCount = noOfBids;
             

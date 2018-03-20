@@ -2,25 +2,31 @@ Vue.component('verify-government-officer', {
   template: '#verify-government-officer',
   data: function(){
     return {
-      govtOfficers:[
-          {
-            address:'23jkknsdf3',
-            name: 'Ramesh',
-            empID: '13134'
-          }
-      ]
+      govtOfficers:[]
     }
+  },
+  mounted(){
+    this.govtOfficers = getUnverifiedOfficers()
   },
   methods:{
     acceptOfficer(event){
+      var verifierAddress = "";
       event.preventDefault();
       var officer_address = event.srcElement.id;
       console.log(officer_address);
+      var res = acceptGovernmentOfficer(officer_address,verifierAddress);
+      if(res == 1){
+          console.log("done!");
+      }else{
+          console.log("error!");
+      }
     },
     rejectOfficer(event){
       event.preventDefault();
       var officer_address = event.srcElement.id;
       console.log(officer_address);
+      var res = rejectGovernmentOfficer();
+      console.log("done");
     }
   }
 })
@@ -29,25 +35,32 @@ Vue.component('verify-bidders', {
   template: '#verify-bidders',
   data: function(){
     return {
-      bidders: [
-          {
-            name: 'rane',
-            gstNumber: '312414',
-            address:'sijfjkn23434'
-          }
-      ]
+      bidders: []      ]
     }
+  },
+  mounted(){
+    this.bidders = getUnverifiedContractors();
   },
   methods:{
     acceptBidder(event){
+        var verifierAddress = "";
         event.preventDefault();
         var bidder_address = event.srcElement.id;
         console.log(bidder_address);
+        var res = acceptContractor(bidder_address,verifierAddress);
+        if (res == 1) {
+          console.log("done!");
+        }else{
+          console.log("error!");
+        }
     },
     rejectBidder(event){
+        var verifierAddress = "";
         event.preventDefault();
         var bidder_address = event.srcElement.id;
         console.log(bidder_address);
+        var res = rejectContractor();
+        console.log("done!");
     }
   }
 })
