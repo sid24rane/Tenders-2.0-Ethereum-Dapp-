@@ -10,19 +10,32 @@ contract FactoryContract {
     function FactoryContract() {
     }
 
-    function createContract(address tenderAddress,
-        address _contractorAddress, 
-         //address _specialOfficerAddress, 
-        string _contractName, 
-        string _contractDocumentUrl, 
+    function createContract(address govtOfficerAddress,
+        address _contractorAddress, string _contractName, string _tenderId, 
+        uint _completionTime, 
+        string[] _constraints, 
+        uint _finalQuotationAmount,
         string[] _taskDescription, 
         uint[] _deadlineForEachTask, 
         uint[] _amountForEachTask, 
         uint _reviewtime) public returns (address) {
+        
         Contract newContract = new Contract();
-        newContract.setContract(address(this), _contractorAddress, _contractName, 
-        _contractDocumentUrl, _taskDescription, _deadlineForEachTask, 
-        _amountForEachTask, _reviewtime);
+        
+        newContract.setContractBasic(govtOfficerAddress, 
+        _contractorAddress, 
+        _tenderId,
+        _completionTime,
+        _constraints
+        );
+
+        newContract.setContractAdvanced(_contractName, 
+        _finalQuotationAmount,
+        _taskDescription, 
+        _deadlineForEachTask, 
+        _amountForEachTask, 
+        _reviewtime);
+
         allContracts.push(newContract);
         return newContract;
     }

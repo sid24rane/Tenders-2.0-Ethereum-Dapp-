@@ -35,7 +35,7 @@ contract GovernmentOfficerRepo {
         walletAddressToNode[walletAddress] = nodeAddress;
     }
 
-    function getNodeAddress(address walletAddress) returns (address) {
+    function getNodeAddress(address walletAddress) public view returns (address) {
         return walletAddressToNode[walletAddress];
     }
     

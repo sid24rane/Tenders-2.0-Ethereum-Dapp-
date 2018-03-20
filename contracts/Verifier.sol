@@ -1,10 +1,8 @@
 pragma solidity ^0.4.20;
 pragma experimental ABIEncoderV2;
 
-import "./Main.sol";
 
-
-contract Verifier is Main {
+contract Verifier {
 
     address walletAddress;
     string email;
@@ -15,57 +13,62 @@ contract Verifier is Main {
     address[] officersVerified;
     address[] contractorsVerified;
 
-    function Verifier (address _walletAddress, string _email, string _phoneNumber, string _name, 
-    string _employeeId) public {
+    function Verifier() public {
+
+    }
+    
+    function setVerifier (address _walletAddress, string _email, string _phoneNumber, string _name, 
+    string _employeeId) public returns (bool) {
         walletAddress = _walletAddress;
         email = _email;
         phoneNumber = _phoneNumber;
         name = _name;
         employeeId = _employeeId;
+        return true;
     }
 
-    function login(address userAddress, string role) public  returns (string) {
-    }
+    // function login(address userAddress, string role) public  returns (string) {
+    // }
 
-    //unverified
-    function getAllUnverifiedGovernmentOfficers(string token) public returns (address[]) {
-        //defined in GovernmentOfficerRepo
-    }    
+    // //unverified
+    // function getAllUnverifiedGovernmentOfficers(string token) public returns (address[]) {
+    //     //defined in GovernmentOfficerRepo
+    // }    
 
-    function getAllUnverifiedContractors(string token) public returns (address[]) {
-        //defined in ContractorRepo
-    }   
+    // function getAllUnverifiedContractors(string token) public returns (address[]) {
+    //     //defined in ContractorRepo
+    // }   
 
-    function getAllUnverifiedDocuments(string token) public returns (string[]) {
-        //getProposalToVerify() in Tender.sol
-    }
+    // function getAllUnverifiedDocuments(string token) public returns (string[]) {
+    //     //getProposalToVerify() in Tender.sol
+    // }
 
 
     // verification
-    function verifyGovernmentOfficer(string token,address govtOfficer) public returns (bool) {
+    function verifyGovernmentOfficer(address govtOfficer) public returns (bool) {
         officersVerified.push(govtOfficer);
         return true;
     }
 
-    function verifyContractor(string token, address contrator) public returns (bool) {
+    function verifyContractor(address contrator) public returns (bool) {
         contractorsVerified.push(contrator);
         return true;
     }
 
-    function verifyProposalDocuments(string token, address tender) public returns (bool) {
+    function verifyProposalDocuments(address tender) public returns (bool) {
         documentsVerified.push(tender);
         return true;
     }
 
-    function myVerifiedDocuments(string token) public returns (address[]) {
+    function myVerifiedDocuments() public view returns (address[]) {
         return documentsVerified;
     }
 
-    function myVerifiedOfficers(string token) public returns (address[]) {
+    function myVerifiedOfficers() public view returns (address[]) {
         return officersVerified;
     }
 
-    function myVerifiedContractors(string token) public returns (address[]) {
+    function myVerifiedContractors() public view returns (address[]) {
         return contractorsVerified;
     }
 
