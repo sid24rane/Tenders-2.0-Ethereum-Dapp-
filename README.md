@@ -84,7 +84,7 @@ Then you have to map the addresses of the the contracts deployed in the web3_mai
 
 ## Screenshots
 * ![Creating Tender](https://lh5.googleusercontent.com/bx5oHEspBCTidvZ_Cy8I_NbYy1GkBlRj4EgzUZQfulRnINSK0YxmxvdfnSocP5Y_MgJJ9UDXkFSilZFIcqmS=w1366-h612-rw)
-* ![Existing Tender](https://lh3.googleusercontent.com/-90SqYW-OAVp7cmpyOTy49tv1ZjNjxQpyPufhIPaUk28Mf3-L_HOYFhShe6YBOgTHu2uXHAeRWo8T1BESzEJ=w1366-h612-rw)
+* ![Existing Tender](https://photos.app.goo.gl/poVKaxbkpeGHxUO12)
 * ![Expired Tender](https://lh6.googleusercontent.com/8_CTKzEJnz3d4xrOaUOb3SReEARfWjM2mJN4PBSAuSOembuSFkyn5uTc6w1Rz83ghFVxku4K_n-IM7Kpl1Zg=w1366-h612-rw)
 * ![Ongoing Contracts](https://photos.app.goo.gl/2UbJ7nps694HpAjR2)
 * ![Placed Bids](https://drive.google.com/file/d/1h5MRoD-OlgC40sAxeV-VFySQG-mx_XIA/view?usp=sharing)
