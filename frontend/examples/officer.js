@@ -1,3 +1,6 @@
+var governmentOfficerNodeAddress = "";
+var current_tender_address = "";
+
 Vue.component('create-tender', {
   template: '#create-tender',
   data(){
@@ -48,16 +51,16 @@ Vue.component('create-tender', {
         clauseinputsArr:this.clauseinputsArr,
         name: this.name,
         id: this.id,
-        orgchain: this.organisationChain,
-        refno: this.referenceNumber,
-        type:this.type,
-        category:this.category,
         cdate:this.closingDate,
         odate:this.openingDate
       };
       this.clearFields();
       console.log(JSON.stringify(newTender));
-      
+      if(createTender(governmentOfficerNodeAddress,newTender.name,newTender.id,newTender.cdate,newTender.odate,coverinputs.length,clauseinputsArr,newTender.taskName,newTender.noOfDays)){
+        console.log("done!");
+      }else{
+        console.log("error!");
+      }      
     },
     clearFields(){
       this.coverinputs = [];
@@ -91,20 +94,32 @@ Vue.component('create-tender', {
         this.clauseinputsArr.push(this.clauseinputs[i].name);
       }
     }
-
-
   }
 })
+
 
 
 Vue.component('expired-tenders', {
   template: '#expired-tenders',
+  data:function(){
+    tenders:[]
+  },
+  mounted(){
+    this.tenders = getExpiredTenders();
+  },
   methods: {
-    biddingList: function(){
+    biddingList: function(event){
+      event.preventDefault();
+      var tender_address = event.srcElement.id;
+      console.log(tender_address);
       this.$parent.currentView = 'bidding-list';
+      current_tender_address = tender_address;
     }
   }
 })
+
+
+
 
 Vue.component('ongoing-contracts', {
   template: '#ongoing-contracts'

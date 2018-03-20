@@ -14,7 +14,7 @@ function getExistingTenders(){
 
             var tenderObj = {};
             tenderObj.address = tempAddress;
-            tenderObj.tenderName = tempBasic.tenderName;
+            tenderObj.name = tempBasic.tenderName;
             tenderObj.bidSubmissionClosingDate = tempBasic.bidSubmissionClosingDate;
             tenderObj.bidOpeningDate = tempBasic.bidOpeningDate;
             

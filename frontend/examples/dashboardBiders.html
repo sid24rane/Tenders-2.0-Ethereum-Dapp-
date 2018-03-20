@@ -133,7 +133,7 @@
                             <tr v-for="tender in existingTenders">
                                 <td>{{tender.name}}</td>
                                 <td>{{tender.bidSubmissionClosingDate}}</td>
-                                <td>{{tender.closingDate}}</td>
+                                <td>{{tender.bidOpeningDate}}</td>
                                 <td >
                                     <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="tender.address" v-on:click="placeBids($event)">
                                         <i class="material-icons">person</i>
@@ -211,47 +211,9 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{verifierAddress}}</label>
-                        </div>
-                    </div>
-
-
             </form>
         </div>
-        </div>
-        
-         <div class="card">
-            <div class="card-header card-header-icon" data-background-color="rose">
-                <i class="material-icons">assignment</i>
-            </div>
-            <div class="card-content">
-                <h4 class="card-title">Proposal Details</h4>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Clause</th>
-                                <th>Quoted Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="clause in clauses">
-                                <td>{{clause.name}}</td>
-                                <td>{{clause.amount}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button class="btn btn-primary btn-simple" @click="viewDocs">
-                    View contractor documents
-                </button>
-            </div>
-        </div>
-
-        
+        </div>    
 
          <div class="card">
             <div class="card-header card-header-icon" data-background-color="rose">
@@ -373,8 +335,8 @@
                         </thead>
                         <tbody>
                             <tr v-for="clause in clauses">
-                                <td>{{clause.name}}</td>
-                                <td><input type="text" class="form-control"></td>
+                                <td v-model="quotedamount.name">{{clause.name}}</td>
+                                <td><input type="text" class="form-control" v-model="quotedamount.amount"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -433,7 +395,7 @@
             <label class="col-md-3"></label> 
             <div class="col-md-9">
                 <div class="form-group form-button">
-                    <button type="submit" class="btn btn-fill btn-rose" @click="existingTenders">Place Bid</button>
+                    <button type="submit" class="btn btn-fill btn-rose" @click="newBid">Place Bid</button>
                 </div>
             </div>
         </div>
@@ -488,6 +450,7 @@
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Expected Completion Date</th>
+                                                    <th>Creation Date</th>
                                                     <th>Status</th>
                                                     <th>More Info</th>
                                                 </tr>
@@ -496,7 +459,8 @@
                                                 <tr v-for="contract in contracts">
                                                     <td>{{contract.name}}</td>
                                                     <td>{{contract.expectedCompletionDate}}</td>
-                                                    <td>{{contract.status}}</td>
+                                                    <td>{{contract.creationDate}}</td>
+                                                    <td>Active</td>
                                                     <td >
                                                         <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="contract.address" v-on:click="activeContractsDetails($event)">
                                                             <i class="material-icons">person</i>

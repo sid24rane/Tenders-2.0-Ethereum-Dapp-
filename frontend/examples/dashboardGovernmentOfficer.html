@@ -50,13 +50,14 @@
                     <li :class="{active:isOnContract}">
                         <a href="#" @click="ongoingContract">
                             <i class="material-icons">dashboard</i>
-                            <p>Ongoing Contract</p>
+                            <p>Active Contracts</p>
                         </a>
                     </li>
                     <li :class="{active:isActiveContract}">
                         <a href="#" @click="activeContract">
                             <i class="material-icons">dashboard</i>
-                            <p>Active Contracts</p>
+                            <p>
+                            Ongoing Contract</p>
                         </a>
                     </li>
                     <li>
@@ -167,50 +168,7 @@
                                 <span class="material-input"></span></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <label class="col-md-3 label-on-left">Organisation Chain</label>
-                        <div class="col-md-9">
-                            <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                                <input type="text" class="form-control" v-model="organisationChain">
-                                <span class="material-input"></span></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label class="col-md-3 label-on-left">Reference Number</label>
-                        <div class="col-md-9">
-                            <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                                <input type="text" class="form-control" v-model.number="referenceNumber">
-                                <span class="material-input"></span></div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <label class="col-md-3 label-on-left">Type</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <select class="form-control" v-model="type">
-                                    <option value="open">Open </option>
-                                    <option value="close">Close</option>
-                                </select>
-                            </div>
-                        </div>
-                        </div>
-
-                    <div class="row">
-                        <label class="col-md-3 label-on-left">Category</label>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <select class="form-control" v-model="category">
-                                    <option value="open">Works</option>
-                                    <option value="close">Services</option>
-                                    <option value="close">Goods</option>
-                                </select>
-                            </div>
-                        </div>
-                        </div>
-                    
                     <div class="row">
                         <label class="col-md-3 label-on-left">Bid Submission Closing Date</label>
                         <div class="col-md-9">
