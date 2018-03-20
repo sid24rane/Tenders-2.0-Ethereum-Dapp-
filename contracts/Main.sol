@@ -3,7 +3,7 @@ pragma experimental ABIEncoderV2;
 
 contract Main{
     
-    function encrypt(address userAddress,string role) internal returns (string){
+    function encrypt(address userAddress, string role) internal returns (string){
     }
 
     function decrypt(string token) internal returns (address){

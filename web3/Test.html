@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./web3.min.js"></script>
+    <script src="./abi.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="officer"></h2>
+    <script>
+    
+
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+	//web3.eth.defaultAccount = web3.eth.accounts[0];
+    var OfficerRepoContract = web3.eth.contract(FactoryGovernmentOfficer);
+    var OfficerRepo = OfficerRepoContract.at("0x4d7c7dd6da85c81ae514e42f1c36a167fdf11fdd27d2e077be57636bd06e9a83");
+    
+    console.log("yahoo : "+ JSON.stringify(OfficerRepo));
+    var officerAddress = OfficerRepo.returnInt.call();
+    //var officerAddress = OfficerRepo.returnString.call();
+    console.log(officerAddress);
+    
+    // var OfficerContract = web3.eth.contract(GovernmentOfficer);
+    // var Officer = OfficerRepoContract.at(officerAddress);
+
+    //$("#officer").html(officer.name());
+    // officerAddress.name((error,result)=>){
+    //     $("#officer").html(result);
+    //     console.log(result);
+    // )};
+
+
+    </script>
+</body>
+</html>

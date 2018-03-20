@@ -29,7 +29,11 @@ contract Tender {
     ContractorProposal[] public allContractorProposals;
     mapping (address => ProposalStatus) isProposalVerified;
 
-    function Tender(address _governmentOfficerAddress, string _tenderName, string[] _clauses, 
+    function Tender() public {
+        
+    }
+
+    function setTender(address _governmentOfficerAddress, string _tenderName, string[] _clauses, 
     string[] _constraints, uint _deadline) public {
         governmentOfficerAddress = _governmentOfficerAddress;   
         tenderName = _tenderName;
@@ -38,8 +42,8 @@ contract Tender {
         deadline = _deadline;
         finalTenderAmount = 0;
     }
-
-    function bid(string token, address _contractorAddress,
+    
+    function bid(address _contractorAddress,
     string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public {
         ContractorProposal storage temp = allContractorProposals[allContractorProposals.length++];
         temp.contractorAddress = _contractorAddress;
@@ -54,7 +58,7 @@ contract Tender {
         temp.status = ProposalStatus.unverified;
     }  
 
-    function getProposalCount() public returns (uint256) {
+    function getProposalCount() public view returns (uint256) {
         return allContractorProposals.length;
     }
 
@@ -63,7 +67,7 @@ contract Tender {
             finalTenderAmount = amount;
     }
 
-    function getProposalsToVerify(uint index) returns (string[], string[][], address) {
+    function getProposalsToVerify(uint index) public returns (string[], string[][], address) {
         //loop at web3
         string[][] tempDocuments;
         address tempAddresses;
@@ -82,11 +86,11 @@ contract Tender {
         isProposalVerified[contractorAddress] = ProposalStatus.rejected;
     }
 
-    function getVerifiedProposals(uint index) returns (string[], string[][], address, uint[]) {
+    function getVerifiedProposals(uint index) public returns (string[], string[][], address, uint[]) {
         //loop at web3
-        string[][] tempDocuments;
+        string[][]  tempDocuments;
         address tempAddresses;
-        uint[] tempAmount;
+        uint[] memory tempAmount;
         if (allContractorProposals[index].status == ProposalStatus.verified) {
             tempDocuments.push(allContractorProposals[index].constraintDocuments);
             tempAddresses = allContractorProposals[index].contractorAddress;

@@ -54,7 +54,11 @@ contract Contract {
     //     }
     // }
 
-    function Contract (
+    function Contract() public {
+
+    }
+    
+    function setContract (
         address _governmentOfficerAddress, 
         address _contractorAddress, 
         //address _specialOfficerAddress, 

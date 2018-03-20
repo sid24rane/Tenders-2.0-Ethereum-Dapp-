@@ -22,16 +22,16 @@ contract TenderRepo {
         tenderMapping[tenderToAppend] = TenderStatus.activeOnBid;
     }
 
-    function getAllTenders() public returns (address[]) {
+    function getAllTenders() public view returns (address[]) {
         //to be used by verifier
         return tenderAddress;
     }
 
-    function getTenderCount() public returns (uint256) {
+    function getTenderCount() public view returns (uint256) {
         return tenderAddress.length;
     }
 
-    function getOngoingTenders(uint256 index) public returns (address) {
+    function getOngoingTenders(uint256 index) public view returns (address) {
         //loop at web3
         if (index > tenderAddress.length) revert();
         if (tenderMapping[tenderAddress[index]] == TenderStatus.activeOnBid) {

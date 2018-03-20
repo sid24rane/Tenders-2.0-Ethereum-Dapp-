@@ -1,12 +1,8 @@
 pragma solidity ^0.4.20;
 pragma experimental ABIEncoderV2;
 
-import "./Main.sol";
-import "./Tender.sol";
-import "./Contract.sol";
 
-
-contract GovernmentOfficer is Main {
+contract GovernmentOfficer {
     
     address public walletAddress;
     string public email;
@@ -24,7 +20,11 @@ contract GovernmentOfficer is Main {
     mapping (address=>bool) public contractStatus; //true => past, false => active
     mapping (address=>address) public tenderToContract;
 
-    function GovernmentOfficer(address _walletAddress, string _email, string _name, 
+    function GovernmentOfficer() public {
+
+    }
+
+    function setGovernmentOfficer(address _walletAddress, string _email, string _name, 
     string _phoneNumber, string _employeeId) {
         walletAddress = _walletAddress;
         email = _email;
@@ -32,43 +32,6 @@ contract GovernmentOfficer is Main {
         name = _name;
         employeeId = _employeeId;
         isVerified = false;
-    }
-
-    function createTender(address _governmentOfficerAddress, string _tenderName, string[] _clauses, 
-    string[] _constraints, uint _deadline) public returns (address) {
-        Tender newTender = new Tender(address(this), _tenderName, _clauses, 
-        _constraints, _deadline);
-        tenders.push(newTender);
-        return newTender;
-    }
-
-    function createContract(address tenderAddress,
-        address _contractorAddress, 
-        //address _specialOfficerAddress, 
-        string _contractName, 
-        string _contractDocumentUrl, 
-        string[] _taskDescription, 
-        uint[] _deadlineForEachTask, 
-        uint[] _amountForEachTask, 
-        uint _reviewtime) public returns (address) {
-        //first call this function and then updateTenderToContract() function for contract deployment
-        Contract newContract = new Contract(address(this), _contractorAddress, _contractName, 
-        _contractDocumentUrl, _taskDescription, _deadlineForEachTask, 
-        _amountForEachTask, _reviewtime);
-        contracts.push(newContract);
-        updateTenderToContract(tenderAddress, newContract);
-        return newContract;
-    }
-
-    function login(address userAddress, string role) public  returns (string) {
-    }
-
-    function getAllContracts(string token) public  returns (address[]) {
-        //refer contracts.sol
-    }
-
-    function getOngoingContracts(string token) public returns (address[]) {
-        //look at contracts.sol
     }
 
     function getMyContracts(string token) public returns (address[]) {
@@ -106,7 +69,7 @@ contract GovernmentOfficer is Main {
         return tenders;
     }
 
-    function getPastTenders(string token) public returns (address[]){
+    function getPastTenders(string token) public returns (address[]) {
         return pastTenders;
     }
 
@@ -129,13 +92,5 @@ contract GovernmentOfficer is Main {
     function updateOfficerVerifiedStatus() public {
         isVerified = true;
     }
-
-    function getQuotations(string token) public returns (address[]) {
-        //look at Tender.sol
-    }
-
-    function logout() public returns (bool) {
-    }
-
 
 }
