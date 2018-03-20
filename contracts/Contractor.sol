@@ -10,6 +10,7 @@ contract Contractor {
     string phoneNumber;
     string panNumber;
     string gstNumber;
+    bool isVerified;
 
     function Contractor() public {
 
@@ -23,5 +24,10 @@ contract Contractor {
         phoneNumber = _phoneNumber;
         panNumber = _panNumber;
         gstNumber = _gstNumber;
+        isVerified = false;
+    }
+
+    function updateOfficerVerifiedStatus() public {
+        isVerified = true;
     }
 }

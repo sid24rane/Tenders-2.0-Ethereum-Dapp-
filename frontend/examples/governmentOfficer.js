@@ -1,14 +1,14 @@
-string GovernmentOfficerRepo = "";
-string ContractorRepo = "";
-string TenderRepo = "";
-string ContractRepo = "";
-string FactoryGovernmentOfficer = "";
-string FactoryContractor = "";
-string FactoryTender = "";
-string FactoryContract = "";
+var GovernmentOfficerRepo = "";
+var ContractorRepo = "";
+var TenderRepo = "";
+var ContractRepo = "";
+var FactoryGovernmentOfficer = "";
+var FactoryContractor = "";
+var FactoryTender = "";
+var FactoryContract = "";
 
-string governmentOfficerWalletAddress;
-string governmentOfficerNodeAddress;
+var governmentOfficerWalletAddress;
+var governmentOfficerNodeAddress;
 
 if (typeof web3 !== 'undefined') {
     web3 = new Web3(web3.currentProvider);
