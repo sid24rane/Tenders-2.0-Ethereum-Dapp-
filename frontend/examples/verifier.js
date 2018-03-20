@@ -4,10 +4,23 @@ Vue.component('verify-government-officer', {
     return {
       govtOfficers:[
           {
+            address:'23jkknsdf3',
             name: 'Ramesh',
             empID: '13134'
           }
       ]
+    }
+  },
+  methods:{
+    acceptOfficer(event){
+      event.preventDefault();
+      var officer_address = event.srcElement.id;
+      console.log(officer_address);
+    },
+    rejectOfficer(event){
+      event.preventDefault();
+      var officer_address = event.srcElement.id;
+      console.log(officer_address);
     }
   }
 })
@@ -19,9 +32,22 @@ Vue.component('verify-bidders', {
       bidders: [
           {
             name: 'rane',
-            gstNumber: '312414'
+            gstNumber: '312414',
+            address:'sijfjkn23434'
           }
       ]
+    }
+  },
+  methods:{
+    acceptBidder(event){
+        event.preventDefault();
+        var bidder_address = event.srcElement.id;
+        console.log(bidder_address);
+    },
+    rejectBidder(event){
+        event.preventDefault();
+        var bidder_address = event.srcElement.id;
+        console.log(bidder_address);
     }
   }
 })

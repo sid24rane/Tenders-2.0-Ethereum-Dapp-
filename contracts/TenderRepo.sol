@@ -3,8 +3,8 @@ pragma experimental ABIEncoderV2;
 
 
 contract TenderRepo {
-    address[] public tenderAddress;
-
+    address[] public tenders;
+    
     enum TenderStatus {
         activeOnBid,
         biddingComplete,
@@ -17,25 +17,26 @@ contract TenderRepo {
         
     }
 
-    function addToTenders(address tenderToAppend) public {
-        tenderAddress.push(tenderToAppend);
+    function newTender(address tenderToAppend) public returns (bool) {
+        tenders.push(tenderToAppend);
         tenderMapping[tenderToAppend] = TenderStatus.activeOnBid;
+        return true;
     }
 
     function getAllTenders() public view returns (address[]) {
         //to be used by verifier
-        return tenderAddress;
+        return tenders;
     }
 
     function getTenderCount() public view returns (uint256) {
-        return tenderAddress.length;
+        return tenders.length;
     }
 
     function getOngoingTenders(uint256 index) public view returns (address) {
         //loop at web3
-        if (index > tenderAddress.length) revert();
-        if (tenderMapping[tenderAddress[index]] == TenderStatus.activeOnBid) {
-            return tenderAddress[index]; 
+        if (index > tenders.length) revert();
+        if (tenderMapping[tenders[index]] == TenderStatus.activeOnBid) {
+            return tenders[index]; 
         }
         revert();
     }

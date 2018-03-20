@@ -17,9 +17,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/common.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/util.js"></script>
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/stats.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     </head>
 
@@ -106,17 +103,11 @@
                 </div>
                 <div class="modal-footer text-center">
                     <button type="button" class="btn btn-simple" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-success btn-simple">Yes</button>
+                    <button type="button" class="btn btn-success btn-simple" @click="logoutMe">Yes</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
 
 
@@ -144,7 +135,7 @@
                                 <td>{{tender.closingDate}}</td>
                                 <td>{{tender.closingDate}}</td>
                                 <td >
-                                    <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="placeBids">
+                                    <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="tender.address" v-on:click="placeBids($event)">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -171,7 +162,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Name</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highway construction</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{name}}</label>
                         </div>
                     </div>
 
@@ -179,7 +170,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Id</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">1231ew434</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{id}}</label>
                         </div>
                     </div>
 
@@ -187,7 +178,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highways</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{organisationChain}}</label>
                         </div>
                     </div>
 
@@ -196,35 +187,35 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">H2324serf</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{referenceNumber}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Open</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{type}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Services</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{category}}</label>
                         </div>
                     </div>    
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">2</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{coverCount}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Milestones</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">3</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{milestonesCount}}</label>
                         </div>
                     </div>
 
@@ -232,7 +223,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Submission Closing Date</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidSubmissionClosingDate}}</label>
                         </div>
                     </div>
 
@@ -240,21 +231,21 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Opening Date</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidOpeningDate}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Starting Date</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">23/10/16</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{contractStartingDate}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">sdsd343sJSD</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{verifierAddress}}</label>
                         </div>
                     </div>
 
@@ -278,9 +269,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Subway corridor of Western Highway</td>
-                                <td>Rs.3000000</td>
+                            <tr v-for="clause in clauses">
+                                <td>{{clause.name}}</td>
+                                <td>{{clause.amount}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -311,17 +302,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Subway corridor of Western Highway</td>
-                                <td>22/10/16</td>
-                                <td>Completed</td>
+                            <tr v-for="milestone in milestones">
+                                <td>{{milestone.name}}</td>
+                                <td>{{milestone.deadline}}</td>
+                                <td>{{milestone.status}}</td>
                                 <td>
-                                   <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
+                                   <button type="button" rel="tooltip" class="btn btn-success" v-bind:id="milestone.index" v-on:click="markMilestoneAsCompleted($event)">
                                                             <i class="material-icons">edit</i>
                                                         </button>
                                 </td>
                                 <td>
-                                     <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
+                                     <button type="button" rel="tooltip" class="btn btn-danger" v-bind:id="milestone.index" v-on:click="withdrawMoney($event)">
                                                             <i class="material-icons">close</i>
                                                         </button>
                                 </td>
@@ -351,7 +342,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Name</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highway construction</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{name}}</label>
                         </div>
                     </div>
 
@@ -359,7 +350,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Id</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">1231ew434</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{id}}</label>
                         </div>
                     </div>
 
@@ -367,7 +358,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Highways</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{organisationChain}}</label>
                         </div>
                     </div>
 
@@ -376,35 +367,35 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">H2324serf</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{referenceNumber}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Open</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{type}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">Services</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{category}}</label>
                         </div>
                     </div>    
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">2</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{coverCount}}</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Milestones</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">3</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{milestonesCount}}</label>
                         </div>
                     </div>
 
@@ -412,7 +403,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Submission Closing Date</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidSubmissionClosingDate}}</label>
                         </div>
                     </div>
 
@@ -420,7 +411,7 @@
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Bid Opening Date</label>
                         <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">22/10/16</label>
+                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{bidOpeningDate}}</label>
                         </div>
                     </div>
             </form>
@@ -442,8 +433,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Subway corridor of Western Highway</td>
+                            <tr v-for="clause in clauses">
+                                <td>{{clause.name}}</td>
                                 <td><input type="text" class="form-control"></td>
                             </tr>
                         </tbody>
@@ -461,8 +452,8 @@
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
-                            <tr>
-                                <td>Subway corridor of Western Highway</td>
+                            <tr v-for="constraint in constraints">
+                                <td>{{constraint.name}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -490,9 +481,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Subway corridor of Western Highway</td>
-                                <td>Rs.3000000</td>
+                            <tr v-for="milestone in milestones">
+                                <td>{{milestone.name}}</td>
+                                <td>{{milestone.amount}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -511,7 +502,7 @@
     </template>
 
 
-
+<!-- placed bids done -->
     <template id="placed-bids">
         <div class="card">
                                 <div class="card-header card-header-icon" data-background-color="rose">
@@ -523,7 +514,6 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Last Bidding Date</th>
                                                     <th>Status</th>
@@ -532,7 +522,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="tender in biddedTenders">
-                                                    <td class="text-center">1</td>
                                                     <td>{{tender.name}}</td>
                                                     <td>{{tender.bidCloseDate}}</td>
                                                     <td>{{tender.status}}</td>
@@ -545,6 +534,8 @@
                             </div>
     </template>
 
+
+
     <template id="active-contracts">
         <div class="card">
                                 <div class="card-header card-header-icon" data-background-color="rose">
@@ -556,7 +547,6 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Expected Completion Date</th>
                                                     <th>Status</th>
@@ -564,13 +554,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="text-center">1</td>
-                                                    <td>Construction of new highway in Mira Road</td>
-                                                    <td>22-8-17</td>
-                                                    <td>Pending</td>
+                                                <tr v-for="contract in contracts">
+                                                    <td>{{contract.name}}</td>
+                                                    <td>{{contract.expectedCompletionDate}}</td>
+                                                    <td>{{contract.status}}</td>
                                                     <td >
-                                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="activeContractsDetails">
+                                                        <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="contract.address" v-on:click="activeContractsDetails($event)">
                                                             <i class="material-icons">person</i>
                                                         </button>
                                                     </td>
@@ -581,6 +570,8 @@
                                 </div>
                             </div>
     </template>
+
+
 
     <template id="view-submitted-docs">
          <div class="card">
@@ -610,11 +601,6 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- <button class="btn" @click="proposalDetails">
-                    <span class="btn-label">
-                        <i class="material-icons">keyboard_arrow_left</i>
-                    </span>
-                </button> -->
             </div>
 
         </div>

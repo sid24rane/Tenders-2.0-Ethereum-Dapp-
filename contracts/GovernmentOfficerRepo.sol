@@ -9,7 +9,7 @@ contract GovernmentOfficerRepo {
     address[] public verifiedOfficers;
     mapping (address=>bool) public verifiedStatus; //true=>verified, false => unverified
     mapping (address=>address) public officerToVerifier;
-
+    mapping (address=>address) public walletAddressToNode;
     function GovernmentOfficerRepo() public {
 
     }
@@ -24,9 +24,19 @@ contract GovernmentOfficerRepo {
     //     return officer;
     // }
 
-    function newOfficer(address officerToAppend) public {
-        officers.push(officerToAppend);
-        verifiedStatus[officerToAppend] = false;
+    function newOfficer(address walletAddress, address nodeAddress) public returns (bool) {
+        officers.push(nodeAddress);
+        verifiedStatus[nodeAddress] = false;
+        mapWalletAddressToNode(walletAddress, nodeAddress);
+        return true;
+    }
+    
+    function mapWalletAddressToNode(address walletAddress, address nodeAddress) public {
+        walletAddressToNode[walletAddress] = nodeAddress;
+    }
+
+    function getNodeAddress(address walletAddress) returns (address) {
+        return walletAddressToNode[walletAddress];
     }
     
     function verifyOfficer(address officerAddress, address verifierAdress) public {
