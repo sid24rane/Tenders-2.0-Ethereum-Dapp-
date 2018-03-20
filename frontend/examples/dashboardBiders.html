@@ -132,7 +132,7 @@
                         <tbody>
                             <tr v-for="tender in existingTenders">
                                 <td>{{tender.name}}</td>
-                                <td>{{tender.closingDate}}</td>
+                                <td>{{tender.bidSubmissionClosingDate}}</td>
                                 <td>{{tender.closingDate}}</td>
                                 <td >
                                     <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="tender.address" v-on:click="placeBids($event)">
@@ -173,37 +173,6 @@
                             <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{id}}</label>
                         </div>
                     </div>
-
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{organisationChain}}</label>
-                        </div>
-                    </div>
-
-
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{referenceNumber}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{type}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{category}}</label>
-                        </div>
-                    </div>    
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
@@ -353,37 +322,7 @@
                             <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{id}}</label>
                         </div>
                     </div>
-
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{organisationChain}}</label>
-                        </div>
-                    </div>
-
-
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{referenceNumber}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{type}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{category}}</label>
-                        </div>
-                    </div>    
+  
 
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
@@ -483,7 +422,7 @@
                         <tbody>
                             <tr v-for="milestone in milestones">
                                 <td>{{milestone.name}}</td>
-                                <td>{{milestone.amount}}</td>
+                                <td>{{milestone.days}}</td>
                             </tr>
                         </tbody>
                     </table>
