@@ -2,15 +2,11 @@ Vue.component('existing-tenders', {
   template: '#existing-tenders',
   data: function(){
     return {
-      existingTenders: [
-          {
-            name:'road ka kaam',
-            closingDate:'24/12/67',
-            bidCount: 20
-          }
-      ]
-      
+      existingTenders: []      
     }
+  },
+  mounted(){
+    this.existingTenders = getExistingTenders();
   },
   methods: {
     tenderInfo : function(){
@@ -41,6 +37,7 @@ Vue.component('ongoing-contracts', {
 
 Vue.component('tender-info', {
   template: '#tender-info',
+  
 })
 
 Vue.component('cm-ongoing-contract-details', {

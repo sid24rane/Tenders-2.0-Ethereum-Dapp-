@@ -1,18 +1,4 @@
-string TenderRepo = "";
-string Tender = "";
-if (typeof web3 !== 'undefined') {
-    web3 = new Web3(web3.currentProvider);
-} else {
-    // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-}
-
-var TenderRepoContract = web3.eth.contract(TenderRepoAbi);
-var TenderRepoInstance = TenderRepoContract.at(TenderRepo);
-
-var TenderContract = web3.eth.contract(TenderAbi);
-
-function existingTenders = () => {
+function getExistingTenders(){
     var existingTenderInfo = [];
 
     TenderRepoInstance.getTenderCount.call((err, count) => {
@@ -27,16 +13,18 @@ function existingTenders = () => {
             var noOfBids = tempAddress.getProposalCount.call({gas : 5000000});
 
             var tenderObj = {};
-            tenderObj.address = tempAddress;
-            tenderObj.date=tempDate;
-            tenderObj.bids = noOfBids;
+            tenderObj.name = tempAddress;
+            tenderObj.closingDate=tempDate;
+            tenderObj.bidCount = noOfBids;
             
             existingTenderInfo.push(tenderObj);
         }
+        console.log(existingTenderInfo);
+        return existingTenderInfo;
     })
 }
 
-function getTenderInfo = (tenderAddress) => {
+function getTenderInfo(tenderAddress) {
     var tenderBasicInfo;
     var tenderAdvancedInfo;
 
