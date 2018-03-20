@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./web3.min.js"></script>
+    <script src="./abi.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="officer"></h2>
+    <script>
+    
+
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+    web3.eth.defaultAccount = web3.eth.accounts[0];
+    console.log("account :" + web3.eth.accounts[0]);
+    var OfficerRepoContract = web3.eth.contract(FactoryGovernmentOfficer);
+    var OfficerRepo = OfficerRepoContract.at("0xaa588d3737b611bafd7bd713445b314bd453a5c8");
+    
+    console.log("yahoo : "+ JSON.stringify(OfficerRepo));
+    console.log("call " + OfficerRepo.returnInt.call());
+    var officerAddress = OfficerRepo.returnInt.call((err,res)=>{
+        console.log(res);
+    });
+    //var officerAddress = OfficerRepo.returnString.call();
+    console.log("default : " + officerAddress);
+
+
+    var MyContract = web3.eth.contract(tempAbi);
+    var add = MyContract.at("0x30753e4a8aad7f8597332e813735def5dd395028");
+    add.myFunction().call()
+    .then(console.log);
+
+
+    
+    // var OfficerContract = web3.eth.contract(GovernmentOfficer);
+    // var Officer = OfficerRepoContract.at(officerAddress);
+
+    //$("#officer").html(officer.name());
+    // officerAddress.name((error,result)=>){
+    //     $("#officer").html(result);
+    //     console.log(result);
+    // )};
+
+
+    </script>
+</body>
+</html>

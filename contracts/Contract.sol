@@ -54,7 +54,11 @@ contract Contract {
     //     }
     // }
 
-    function Contract (
+    function Contract() public {
+
+    }
+    
+    function setContract (
         address _governmentOfficerAddress, 
         address _contractorAddress, 
         //address _specialOfficerAddress, 
@@ -106,7 +110,7 @@ contract Contract {
         //eventToFire
     }
 
-    function verifyTask(uint _taskIndex) public onlyGovernmentOfficer {
+    function verifyTask(uint _taskIndex) public onlyGovernmentOfficer returns (bool) {
         if (_taskIndex >= tasks.length) revert();
         Task storage task = tasks[_taskIndex];
 
@@ -114,6 +118,7 @@ contract Contract {
         if (msg.sender == governmentOfficerAddress) {
             governmentOfficerVerified = true;
             task.status = TaskStatus.complete;
+            return true;
         // }else if (msg.sender == specialOfficerAddress) {
         //     specialOfficerVerified = true;
         //     task.status = TaskStatus.partiallyVerified;

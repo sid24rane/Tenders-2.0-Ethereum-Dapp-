@@ -4,10 +4,19 @@ pragma experimental ABIEncoderV2;
 
 contract Tender {   
     address public governmentOfficerAddress;
-    string public tenderName;
+    string public tenderName; 
+    string public tenderId;
+    string public organisationChain;
+    string public tenderRefNum;
+    string public tenderType;
+    string public tenderCategory;
+    uint public bidSubmissionClosingDate;
+    uint public bidOpeningDate;
+    uint public covers;
     string[] public clauses;
+    string[] public taskName;
+    uint[] public taskDays;
     string[] public constraints;
-    uint deadline;
     uint finalTenderAmount;
 
     struct ContractorProposal {
@@ -29,17 +38,45 @@ contract Tender {
     ContractorProposal[] public allContractorProposals;
     mapping (address => ProposalStatus) isProposalVerified;
 
-    function Tender(address _governmentOfficerAddress, string _tenderName, string[] _clauses, 
-    string[] _constraints, uint _deadline) public {
-        governmentOfficerAddress = _governmentOfficerAddress;   
-        tenderName = _tenderName;
-        clauses = _clauses;
-        constraints = _constraints;
-        deadline = _deadline;
-        finalTenderAmount = 0;
+    function Tender() public {
+        
     }
 
-    function bid(string token, address _contractorAddress,
+    function setTenderBasic(address _governmentOfficerAddress, string _tenderName, string _tenderId, 
+    string _organisationChain, string _tenderRefNum, string _tenderType, string _tenderCategory,
+    uint _bidSubmissionClosingDate, uint _bidOpeningDate, uint _covers) public {
+        governmentOfficerAddress = _governmentOfficerAddress;   
+        tenderName = _tenderName;
+        tenderId = _tenderId;
+        organisationChain = _organisationChain;
+        tenderRefNum = _tenderRefNum;
+        tenderType = _tenderType;
+        tenderCategory = _tenderCategory;
+        bidSubmissionClosingDate = _bidSubmissionClosingDate;
+        bidOpeningDate = _bidOpeningDate;
+        covers = _covers;
+        finalTenderAmount = 0;
+    }
+    
+    function setTenderAdvanced(string[] _clauses,
+    string[] _taskName, uint[] _taskDays, string[] _constraints) public {
+        clauses = _clauses;
+        taskName = _taskName;
+        taskDays = _taskDays;
+        constraints = _constraints;
+    }
+
+    function getTenderBasic() public view returns (address, string, string, string, string, string, string,
+    uint, uint, uint) {
+        return (governmentOfficerAddress, tenderName, tenderId, organisationChain, tenderRefNum, 
+        tenderType, tenderCategory, bidSubmissionClosingDate, bidOpeningDate, covers);
+    }
+
+    function getTenderAdvanced() public view returns (string[], string[], uint[], string[]) {
+        return (clauses, taskName, taskDays, constraints );
+    }
+
+    function bid(address _contractorAddress,
     string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public {
         ContractorProposal storage temp = allContractorProposals[allContractorProposals.length++];
         temp.contractorAddress = _contractorAddress;
@@ -54,7 +91,11 @@ contract Tender {
         temp.status = ProposalStatus.unverified;
     }  
 
-    function getProposalCount() public returns (uint256) {
+    function getBiddindCloseDate() public returns (uint) {
+        return bidSubmissionClosingDate;
+    }
+
+    function getProposalCount() public view returns (uint256) {
         return allContractorProposals.length;
     }
 
@@ -63,9 +104,10 @@ contract Tender {
             finalTenderAmount = amount;
     }
 
-    function getProposalsToVerify(uint index) returns (string[], string[][], address) {
+    function getProposalsToVerify(uint index) public returns (string[], string[][], address) {
         //loop at web3
         string[][] tempDocuments;
+
         address tempAddresses;
         if (allContractorProposals[index].status == ProposalStatus.unverified) {
             tempDocuments.push(allContractorProposals[index].constraintDocuments);
@@ -82,11 +124,11 @@ contract Tender {
         isProposalVerified[contractorAddress] = ProposalStatus.rejected;
     }
 
-    function getVerifiedProposals(uint index) returns (string[], string[][], address, uint[]) {
+    function getVerifiedProposals(uint index) public returns (string[], string[][], address, uint[]) {
         //loop at web3
-        string[][] tempDocuments;
+        string[][]  tempDocuments;
         address tempAddresses;
-        uint[] tempAmount;
+        uint[] memory tempAmount;
         if (allContractorProposals[index].status == ProposalStatus.verified) {
             tempDocuments.push(allContractorProposals[index].constraintDocuments);
             tempAddresses = allContractorProposals[index].contractorAddress;
