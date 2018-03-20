@@ -115,12 +115,6 @@
 
 
 
-
-
-
-
-
-
     <template id="existing-tenders">
         <div class="card">
             <div class="card-header card-header-icon" data-background-color="rose">
@@ -144,7 +138,7 @@
                                 <td>{{tender.closingDate}}</td>
                                 <td>{{tender.closingDate}}</td>
                                 <td >
-                                    <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="" @click="placeBids">
+                                    <button type="button" rel="tooltip" class="btn btn-info" v-bind:id="tender.address" v-on:click="placeBids($event)">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -523,7 +517,6 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Last Bidding Date</th>
                                                     <th>Status</th>
@@ -532,7 +525,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="tender in biddedTenders">
-                                                    <td class="text-center">1</td>
                                                     <td>{{tender.name}}</td>
                                                     <td>{{tender.bidCloseDate}}</td>
                                                     <td>{{tender.status}}</td>
@@ -556,7 +548,6 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
                                                     <th>Name</th>
                                                     <th>Expected Completion Date</th>
                                                     <th>Status</th>
@@ -565,7 +556,6 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center">1</td>
                                                     <td>Construction of new highway in Mira Road</td>
                                                     <td>22-8-17</td>
                                                     <td>Pending</td>

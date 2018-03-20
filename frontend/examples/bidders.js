@@ -5,17 +5,22 @@ Vue.component('existing-tenders', {
       existingTenders:[
         {
            name:'sid',
-           closingDate:'34/10/2'
+           closingDate:'34/10/2',
+           address:'sdsd2323'
         },
         {
            name:'sid',
-           closingDate:'34/10/2'
+           closingDate:'34/10/2',
+           address:'dsd238934'
         }
       ]
     }
   },
     methods: {
-      placeBids : function(){
+      placeBids : function(event){
+        event.preventDefault();
+        var tender_address = event.srcElement.id;
+        console.log(tender_address);
         this.$parent.currentView = 'place-bid';
       }
     }
