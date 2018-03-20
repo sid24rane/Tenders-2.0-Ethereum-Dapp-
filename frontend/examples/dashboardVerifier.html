@@ -142,12 +142,11 @@
                 <i class="material-icons">assignment</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Simple Table</h4>
+                <h4 class="card-title">Government Officers</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
                                 <th>Name</th>
                                 <th>Employee ID</th>
                                 <th>Accept</th>
@@ -156,18 +155,16 @@
                         </thead>
                         <tbody>
                             <tr v-for="officer in govtOfficers">
-                                <td class="text-center">1</td>
                                 <td>{{officer.name}}</td>
                                 <td>{{officer.empID}}</td>
                                 <td>
-                                    <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
-                                        <i class="material-icons">edit</i>
+                                    <button type="button" rel="tooltip" class="btn btn-success" v-bind:id="officer.address" v-on:click="acceptOfficer($event)">
+                                        <i class="material-icons" >done</i>
                                     </button>
                                 </td>
                                 <td>
-                                
-                                    <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="" >
-                                        <i class="material-icons">close</i>
+                                    <button type="button" rel="tooltip" class="btn btn-danger" v-bind:id="officer.address" v-on:click="rejectOfficer($event)">
+                                        <i class="material-icons">clear</i>
                                     </button>
                                 
                                 </div>
@@ -184,12 +181,11 @@
                 <i class="material-icons">assignment</i>
             </div>
             <div class="card-content">
-                <h4 class="card-title">Simple Table</h4>
+                <h4 class="card-title">Contractors</h4>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
                                 <th>Name</th>
                                 <th>GST Number</th>
                                 <th>Accept</th>
@@ -198,17 +194,16 @@
                         </thead>
                         <tbody>
                             <tr v-for="bidder in bidders">
-                                <td class="text-center">1</td>
                                 <td>{{bidder.name}}</td>
                                 <td>{{bidder.gstNumber}}</td>
                                 <td>
-                                    <button type="button" rel="tooltip" class="btn btn-success" data-original-title="" title="">
-                                        <i class="material-icons">edit</i>
+                                    <button type="button" rel="tooltip" class="btn btn-success"  v-bind:id="bidder.address" v-on:click="acceptBidder($event)">
+                                        <i class="material-icons">done</i>
                                     </button>
                                 </td>
                                 <td>
-                                    <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
-                                        <i class="material-icons">close</i>
+                                    <button type="button" rel="tooltip" class="btn btn-danger"  v-bind:id="bidder.address" v-on:click="rejectBidder($event)">
+                                        <i class="material-icons">clear</i>
                                     </button>
                                 </td>
                             </tr>
@@ -229,7 +224,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
                                 <th>Tender name</th>
                                 <th>Contractor's Address</th>
                                 <th>View Docs</th>
@@ -237,12 +231,11 @@
                         </thead>
                         <tbody>
                             <tr v-for="tender in tenders">
-                                <td class="text-center">1</td>
                                 <td>{{tender.name}}</td>
                                 <td>{{tender.contractorAddress}}</td>
                                 <td>                                   
                                         <button type="button" rel="tooltip" data-original-title="" title="" class="btn btn-info" @click="viewAllDocs">
-                                            <i class="material-icons">person</i>
+                                            <i class="material-icons">info</i>
                                         </button>                                   
                                 </td>                                
                             </tr>
@@ -264,7 +257,6 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="text-center">#</th>
                                 <th>Name</th>
                                 <th>View</th>
                                 
@@ -272,7 +264,6 @@
                         </thead>
                         <tbody>
                             <tr v-for="doc in docs">
-                                <td class="text-center">1</td>
                                 <td>{{doc.name}}</td>
                                 <td >
                                     <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
