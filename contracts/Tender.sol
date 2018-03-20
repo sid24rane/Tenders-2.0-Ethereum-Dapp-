@@ -17,7 +17,7 @@ contract Tender {
     string[] public taskName;
     uint256[] public taskDays;
     string[] public constraints;
-    uint finalTenderAmount;
+    uint256 finalTenderAmount;
 
     struct ContractorProposal {
         address contractorAddress;
@@ -130,9 +130,10 @@ contract Tender {
         isProposalVerified[contractorAddress] = ProposalStatus.rejected;
     }
 
-    function getProposal(uint256 index) public view returns (address, string) {
+    function getProposal(uint256 index) public view returns (address, uint256, ProposalStatus) {
         if (index > allContractorProposals.length) revert();
-        return (allContractorProposals[index].contractorAddress, allContractorProposals[index].proposalAmount);
+        return (allContractorProposals[index].contractorAddress, 
+        allContractorProposals[index].proposalAmount, allContractorProposals[index].status);
     }
 
     function getVerifiedProposals(uint index) public returns (string[], string[][], address, uint[]) {

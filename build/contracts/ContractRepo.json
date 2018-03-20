@@ -170,7 +170,7 @@
       "absolutePath": "/home/scoco/Desktop/TenderSystem---Blockchain/contracts/ContractRepo.sol",
       "exportedSymbols": {
         "ContractRepo": [
-          637
+          640
         ]
       }
     },
@@ -184,7 +184,7 @@
             ".20"
           ]
         },
-        "id": 516,
+        "id": 519,
         "name": "PragmaDirective",
         "src": "0:24:1"
       },
@@ -195,7 +195,7 @@
             "ABIEncoderV2"
           ]
         },
-        "id": 517,
+        "id": 520,
         "name": "PragmaDirective",
         "src": "25:33:1"
       },
@@ -211,54 +211,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            637
+            640
           ],
           "name": "ContractRepo",
-          "scope": 638
+          "scope": 641
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "contractAddress",
-              "scope": 637,
-              "stateVariable": true,
-              "storageLocation": "default",
-              "type": "address[] storage ref",
-              "value": null,
-              "visibility": "public"
-            },
-            "children": [
-              {
-                "attributes": {
-                  "length": null,
-                  "type": "address[] storage pointer"
-                },
-                "children": [
-                  {
-                    "attributes": {
-                      "name": "address",
-                      "type": "address"
-                    },
-                    "id": 518,
-                    "name": "ElementaryTypeName",
-                    "src": "89:7:1"
-                  }
-                ],
-                "id": 519,
-                "name": "ArrayTypeName",
-                "src": "89:9:1"
-              }
-            ],
-            "id": 520,
-            "name": "VariableDeclaration",
-            "src": "89:32:1"
-          },
-          {
-            "attributes": {
-              "constant": false,
-              "name": "completedContracts",
-              "scope": 637,
+              "scope": 640,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address[] storage ref",
@@ -279,15 +242,52 @@
                     },
                     "id": 521,
                     "name": "ElementaryTypeName",
-                    "src": "127:7:1"
+                    "src": "89:7:1"
                   }
                 ],
                 "id": 522,
                 "name": "ArrayTypeName",
-                "src": "127:9:1"
+                "src": "89:9:1"
               }
             ],
             "id": 523,
+            "name": "VariableDeclaration",
+            "src": "89:32:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "completedContracts",
+              "scope": 640,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address[] storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "address[] storage pointer"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 524,
+                    "name": "ElementaryTypeName",
+                    "src": "127:7:1"
+                  }
+                ],
+                "id": 525,
+                "name": "ArrayTypeName",
+                "src": "127:9:1"
+              }
+            ],
+            "id": 526,
             "name": "VariableDeclaration",
             "src": "127:35:1"
           },
@@ -301,7 +301,7 @@
                 "attributes": {
                   "name": "onGoing"
                 },
-                "id": 524,
+                "id": 527,
                 "name": "EnumValue",
                 "src": "246:7:1"
               },
@@ -309,12 +309,12 @@
                 "attributes": {
                   "name": "complete"
                 },
-                "id": 525,
+                "id": 528,
                 "name": "EnumValue",
                 "src": "263:8:1"
               }
             ],
-            "id": 526,
+            "id": 529,
             "name": "EnumDefinition",
             "src": "216:61:1"
           },
@@ -322,7 +322,7 @@
             "attributes": {
               "constant": false,
               "name": "contractMapping",
-              "scope": 637,
+              "scope": 640,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(address => enum ContractRepo.ContractStatus)",
@@ -340,7 +340,7 @@
                       "name": "address",
                       "type": "address"
                     },
-                    "id": 527,
+                    "id": 530,
                     "name": "ElementaryTypeName",
                     "src": "292:7:1"
                   },
@@ -348,20 +348,20 @@
                     "attributes": {
                       "contractScope": null,
                       "name": "ContractStatus",
-                      "referencedDeclaration": 526,
+                      "referencedDeclaration": 529,
                       "type": "enum ContractRepo.ContractStatus"
                     },
-                    "id": 528,
+                    "id": 531,
                     "name": "UserDefinedTypeName",
                     "src": "301:14:1"
                   }
                 ],
-                "id": 529,
+                "id": 532,
                 "name": "Mapping",
                 "src": "283:33:1"
               }
             ],
-            "id": 530,
+            "id": 533,
             "name": "VariableDeclaration",
             "src": "283:56:1"
           },
@@ -375,7 +375,7 @@
               ],
               "name": "ContractRepo",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -388,7 +388,7 @@
                   ]
                 },
                 "children": [],
-                "id": 531,
+                "id": 534,
                 "name": "ParameterList",
                 "src": "367:2:1"
               },
@@ -399,7 +399,7 @@
                   ]
                 },
                 "children": [],
-                "id": 532,
+                "id": 535,
                 "name": "ParameterList",
                 "src": "377:0:1"
               },
@@ -410,12 +410,12 @@
                   ]
                 },
                 "children": [],
-                "id": 533,
+                "id": 536,
                 "name": "Block",
                 "src": "377:8:1"
               }
             ],
-            "id": 534,
+            "id": 537,
             "name": "FunctionDefinition",
             "src": "346:39:1"
           },
@@ -429,7 +429,7 @@
               ],
               "name": "addToContracts",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -441,7 +441,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "contractToAppend",
-                      "scope": 557,
+                      "scope": 560,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -454,17 +454,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 535,
+                        "id": 538,
                         "name": "ElementaryTypeName",
                         "src": "415:7:1"
                       }
                     ],
-                    "id": 536,
+                    "id": 539,
                     "name": "VariableDeclaration",
                     "src": "415:24:1"
                   }
                 ],
-                "id": 537,
+                "id": 540,
                 "name": "ParameterList",
                 "src": "414:26:1"
               },
@@ -474,7 +474,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 557,
+                      "scope": 560,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -487,17 +487,17 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 538,
+                        "id": 541,
                         "name": "ElementaryTypeName",
                         "src": "457:4:1"
                       }
                     ],
-                    "id": 539,
+                    "id": 542,
                     "name": "VariableDeclaration",
                     "src": "457:4:1"
                   }
                 ],
-                "id": 540,
+                "id": 543,
                 "name": "ParameterList",
                 "src": "456:6:1"
               },
@@ -543,16 +543,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 520,
+                                  "referencedDeclaration": 523,
                                   "type": "address[] storage ref",
                                   "value": "contractAddress"
                                 },
-                                "id": 541,
+                                "id": 544,
                                 "name": "Identifier",
                                 "src": "473:15:1"
                               }
                             ],
-                            "id": 543,
+                            "id": 546,
                             "name": "MemberAccess",
                             "src": "473:20:1"
                           },
@@ -562,21 +562,21 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 536,
+                              "referencedDeclaration": 539,
                               "type": "address",
                               "value": "contractToAppend"
                             },
-                            "id": 544,
+                            "id": 547,
                             "name": "Identifier",
                             "src": "494:16:1"
                           }
                         ],
-                        "id": 545,
+                        "id": 548,
                         "name": "FunctionCall",
                         "src": "473:38:1"
                       }
                     ],
-                    "id": 546,
+                    "id": 549,
                     "name": "ExpressionStatement",
                     "src": "473:38:1"
                   },
@@ -609,11 +609,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 530,
+                                  "referencedDeclaration": 533,
                                   "type": "mapping(address => enum ContractRepo.ContractStatus)",
                                   "value": "contractMapping"
                                 },
-                                "id": 547,
+                                "id": 550,
                                 "name": "Identifier",
                                 "src": "521:15:1"
                               },
@@ -623,16 +623,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 536,
+                                  "referencedDeclaration": 539,
                                   "type": "address",
                                   "value": "contractToAppend"
                                 },
-                                "id": 548,
+                                "id": 551,
                                 "name": "Identifier",
                                 "src": "537:16:1"
                               }
                             ],
-                            "id": 549,
+                            "id": 552,
                             "name": "IndexAccess",
                             "src": "521:33:1"
                           },
@@ -654,32 +654,32 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 526,
+                                  "referencedDeclaration": 529,
                                   "type": "type(enum ContractRepo.ContractStatus)",
                                   "value": "ContractStatus"
                                 },
-                                "id": 550,
+                                "id": 553,
                                 "name": "Identifier",
                                 "src": "557:14:1"
                               }
                             ],
-                            "id": 551,
+                            "id": 554,
                             "name": "MemberAccess",
                             "src": "557:22:1"
                           }
                         ],
-                        "id": 552,
+                        "id": 555,
                         "name": "Assignment",
                         "src": "521:58:1"
                       }
                     ],
-                    "id": 553,
+                    "id": 556,
                     "name": "ExpressionStatement",
                     "src": "521:58:1"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 540
+                      "functionReturnParameters": 543
                     },
                     "children": [
                       {
@@ -695,22 +695,22 @@
                           "type": "bool",
                           "value": "true"
                         },
-                        "id": 554,
+                        "id": 557,
                         "name": "Literal",
                         "src": "596:4:1"
                       }
                     ],
-                    "id": 555,
+                    "id": 558,
                     "name": "Return",
                     "src": "589:11:1"
                   }
                 ],
-                "id": 556,
+                "id": 559,
                 "name": "Block",
                 "src": "463:144:1"
               }
             ],
-            "id": 557,
+            "id": 560,
             "name": "FunctionDefinition",
             "src": "391:216:1"
           },
@@ -724,7 +724,7 @@
               ],
               "name": "getAllContracts",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -737,7 +737,7 @@
                   ]
                 },
                 "children": [],
-                "id": 558,
+                "id": 561,
                 "name": "ParameterList",
                 "src": "637:2:1"
               },
@@ -747,7 +747,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 566,
+                      "scope": 569,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -766,22 +766,22 @@
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 559,
+                            "id": 562,
                             "name": "ElementaryTypeName",
                             "src": "661:7:1"
                           }
                         ],
-                        "id": 560,
+                        "id": 563,
                         "name": "ArrayTypeName",
                         "src": "661:9:1"
                       }
                     ],
-                    "id": 561,
+                    "id": 564,
                     "name": "VariableDeclaration",
                     "src": "661:9:1"
                   }
                 ],
-                "id": 562,
+                "id": 565,
                 "name": "ParameterList",
                 "src": "660:11:1"
               },
@@ -789,7 +789,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 562
+                      "functionReturnParameters": 565
                     },
                     "children": [
                       {
@@ -798,26 +798,26 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 520,
+                          "referencedDeclaration": 523,
                           "type": "address[] storage ref",
                           "value": "contractAddress"
                         },
-                        "id": 563,
+                        "id": 566,
                         "name": "Identifier",
                         "src": "689:15:1"
                       }
                     ],
-                    "id": 564,
+                    "id": 567,
                     "name": "Return",
                     "src": "682:22:1"
                   }
                 ],
-                "id": 565,
+                "id": 568,
                 "name": "Block",
                 "src": "672:39:1"
               }
             ],
-            "id": 566,
+            "id": 569,
             "name": "FunctionDefinition",
             "src": "613:98:1"
           },
@@ -831,7 +831,7 @@
               ],
               "name": "getContractCount",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -844,7 +844,7 @@
                   ]
                 },
                 "children": [],
-                "id": 567,
+                "id": 570,
                 "name": "ParameterList",
                 "src": "742:2:1"
               },
@@ -854,7 +854,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 575,
+                      "scope": 578,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -867,17 +867,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 568,
+                        "id": 571,
                         "name": "ElementaryTypeName",
                         "src": "766:7:1"
                       }
                     ],
-                    "id": 569,
+                    "id": 572,
                     "name": "VariableDeclaration",
                     "src": "766:7:1"
                   }
                 ],
-                "id": 570,
+                "id": 573,
                 "name": "ParameterList",
                 "src": "765:9:1"
               },
@@ -885,7 +885,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 570
+                      "functionReturnParameters": 573
                     },
                     "children": [
                       {
@@ -906,31 +906,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 520,
+                              "referencedDeclaration": 523,
                               "type": "address[] storage ref",
                               "value": "contractAddress"
                             },
-                            "id": 571,
+                            "id": 574,
                             "name": "Identifier",
                             "src": "792:15:1"
                           }
                         ],
-                        "id": 572,
+                        "id": 575,
                         "name": "MemberAccess",
                         "src": "792:22:1"
                       }
                     ],
-                    "id": 573,
+                    "id": 576,
                     "name": "Return",
                     "src": "785:29:1"
                   }
                 ],
-                "id": 574,
+                "id": 577,
                 "name": "Block",
                 "src": "775:46:1"
               }
             ],
-            "id": 575,
+            "id": 578,
             "name": "FunctionDefinition",
             "src": "717:104:1"
           },
@@ -944,7 +944,7 @@
               ],
               "name": "getOngoingContracts",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -956,7 +956,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "index",
-                      "scope": 608,
+                      "scope": 611,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -969,17 +969,17 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 576,
+                        "id": 579,
                         "name": "ElementaryTypeName",
                         "src": "856:7:1"
                       }
                     ],
-                    "id": 577,
+                    "id": 580,
                     "name": "VariableDeclaration",
                     "src": "856:13:1"
                   }
                 ],
-                "id": 578,
+                "id": 581,
                 "name": "ParameterList",
                 "src": "855:15:1"
               },
@@ -989,7 +989,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 608,
+                      "scope": 611,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1002,17 +1002,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 579,
+                        "id": 582,
                         "name": "ElementaryTypeName",
                         "src": "892:7:1"
                       }
                     ],
-                    "id": 580,
+                    "id": 583,
                     "name": "VariableDeclaration",
                     "src": "892:7:1"
                   }
                 ],
-                "id": 581,
+                "id": 584,
                 "name": "ParameterList",
                 "src": "891:9:1"
               },
@@ -1044,11 +1044,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 577,
+                              "referencedDeclaration": 580,
                               "type": "uint256",
                               "value": "index"
                             },
-                            "id": 582,
+                            "id": 585,
                             "name": "Identifier",
                             "src": "938:5:1"
                           },
@@ -1070,21 +1070,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 520,
+                                  "referencedDeclaration": 523,
                                   "type": "address[] storage ref",
                                   "value": "contractAddress"
                                 },
-                                "id": 583,
+                                "id": 586,
                                 "name": "Identifier",
                                 "src": "946:15:1"
                               }
                             ],
-                            "id": 584,
+                            "id": 587,
                             "name": "MemberAccess",
                             "src": "946:22:1"
                           }
                         ],
-                        "id": 585,
+                        "id": 588,
                         "name": "BinaryOperation",
                         "src": "938:30:1"
                       },
@@ -1116,26 +1116,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2683,
+                                  "referencedDeclaration": 1636,
                                   "type": "function () pure",
                                   "value": "revert"
                                 },
-                                "id": 586,
+                                "id": 589,
                                 "name": "Identifier",
                                 "src": "970:6:1"
                               }
                             ],
-                            "id": 587,
+                            "id": 590,
                             "name": "FunctionCall",
                             "src": "970:8:1"
                           }
                         ],
-                        "id": 588,
+                        "id": 591,
                         "name": "ExpressionStatement",
                         "src": "970:8:1"
                       }
                     ],
-                    "id": 589,
+                    "id": 592,
                     "name": "IfStatement",
                     "src": "934:44:1"
                   },
@@ -1148,7 +1148,7 @@
                         "attributes": {
                           "argumentTypes": null,
                           "commonType": {
-                            "typeIdentifier": "t_enum$_ContractStatus_$526",
+                            "typeIdentifier": "t_enum$_ContractStatus_$529",
                             "typeString": "enum ContractRepo.ContractStatus"
                           },
                           "isConstant": false,
@@ -1175,11 +1175,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 530,
+                                  "referencedDeclaration": 533,
                                   "type": "mapping(address => enum ContractRepo.ContractStatus)",
                                   "value": "contractMapping"
                                 },
-                                "id": 590,
+                                "id": 593,
                                 "name": "Identifier",
                                 "src": "992:15:1"
                               },
@@ -1199,11 +1199,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 520,
+                                      "referencedDeclaration": 523,
                                       "type": "address[] storage ref",
                                       "value": "contractAddress"
                                     },
-                                    "id": 591,
+                                    "id": 594,
                                     "name": "Identifier",
                                     "src": "1008:15:1"
                                   },
@@ -1213,21 +1213,21 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 577,
+                                      "referencedDeclaration": 580,
                                       "type": "uint256",
                                       "value": "index"
                                     },
-                                    "id": 592,
+                                    "id": 595,
                                     "name": "Identifier",
                                     "src": "1024:5:1"
                                   }
                                 ],
-                                "id": 593,
+                                "id": 596,
                                 "name": "IndexAccess",
                                 "src": "1008:22:1"
                               }
                             ],
-                            "id": 594,
+                            "id": 597,
                             "name": "IndexAccess",
                             "src": "992:39:1"
                           },
@@ -1249,21 +1249,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 526,
+                                  "referencedDeclaration": 529,
                                   "type": "type(enum ContractRepo.ContractStatus)",
                                   "value": "ContractStatus"
                                 },
-                                "id": 595,
+                                "id": 598,
                                 "name": "Identifier",
                                 "src": "1035:14:1"
                               }
                             ],
-                            "id": 596,
+                            "id": 599,
                             "name": "MemberAccess",
                             "src": "1035:22:1"
                           }
                         ],
-                        "id": 597,
+                        "id": 600,
                         "name": "BinaryOperation",
                         "src": "992:65:1"
                       },
@@ -1271,7 +1271,7 @@
                         "children": [
                           {
                             "attributes": {
-                              "functionReturnParameters": 581
+                              "functionReturnParameters": 584
                             },
                             "children": [
                               {
@@ -1290,11 +1290,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 520,
+                                      "referencedDeclaration": 523,
                                       "type": "address[] storage ref",
                                       "value": "contractAddress"
                                     },
-                                    "id": 598,
+                                    "id": 601,
                                     "name": "Identifier",
                                     "src": "1080:15:1"
                                   },
@@ -1304,31 +1304,31 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 577,
+                                      "referencedDeclaration": 580,
                                       "type": "uint256",
                                       "value": "index"
                                     },
-                                    "id": 599,
+                                    "id": 602,
                                     "name": "Identifier",
                                     "src": "1096:5:1"
                                   }
                                 ],
-                                "id": 600,
+                                "id": 603,
                                 "name": "IndexAccess",
                                 "src": "1080:22:1"
                               }
                             ],
-                            "id": 601,
+                            "id": 604,
                             "name": "Return",
                             "src": "1073:29:1"
                           }
                         ],
-                        "id": 602,
+                        "id": 605,
                         "name": "Block",
                         "src": "1059:55:1"
                       }
                     ],
-                    "id": 603,
+                    "id": 606,
                     "name": "IfStatement",
                     "src": "988:126:1"
                   },
@@ -1360,31 +1360,31 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2683,
+                              "referencedDeclaration": 1636,
                               "type": "function () pure",
                               "value": "revert"
                             },
-                            "id": 604,
+                            "id": 607,
                             "name": "Identifier",
                             "src": "1123:6:1"
                           }
                         ],
-                        "id": 605,
+                        "id": 608,
                         "name": "FunctionCall",
                         "src": "1123:8:1"
                       }
                     ],
-                    "id": 606,
+                    "id": 609,
                     "name": "ExpressionStatement",
                     "src": "1123:8:1"
                   }
                 ],
-                "id": 607,
+                "id": 610,
                 "name": "Block",
                 "src": "901:237:1"
               }
             ],
-            "id": 608,
+            "id": 611,
             "name": "FunctionDefinition",
             "src": "827:311:1"
           },
@@ -1398,7 +1398,7 @@
               ],
               "name": "getCompletedContracts",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -1411,7 +1411,7 @@
                   ]
                 },
                 "children": [],
-                "id": 609,
+                "id": 612,
                 "name": "ParameterList",
                 "src": "1174:2:1"
               },
@@ -1421,7 +1421,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 617,
+                      "scope": 620,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address[] memory",
@@ -1440,22 +1440,22 @@
                               "name": "address",
                               "type": "address"
                             },
-                            "id": 610,
+                            "id": 613,
                             "name": "ElementaryTypeName",
                             "src": "1198:7:1"
                           }
                         ],
-                        "id": 611,
+                        "id": 614,
                         "name": "ArrayTypeName",
                         "src": "1198:9:1"
                       }
                     ],
-                    "id": 612,
+                    "id": 615,
                     "name": "VariableDeclaration",
                     "src": "1198:9:1"
                   }
                 ],
-                "id": 613,
+                "id": 616,
                 "name": "ParameterList",
                 "src": "1197:11:1"
               },
@@ -1463,7 +1463,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 613
+                      "functionReturnParameters": 616
                     },
                     "children": [
                       {
@@ -1472,26 +1472,26 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 523,
+                          "referencedDeclaration": 526,
                           "type": "address[] storage ref",
                           "value": "completedContracts"
                         },
-                        "id": 614,
+                        "id": 617,
                         "name": "Identifier",
                         "src": "1226:18:1"
                       }
                     ],
-                    "id": 615,
+                    "id": 618,
                     "name": "Return",
                     "src": "1219:25:1"
                   }
                 ],
-                "id": 616,
+                "id": 619,
                 "name": "Block",
                 "src": "1209:42:1"
               }
             ],
-            "id": 617,
+            "id": 620,
             "name": "FunctionDefinition",
             "src": "1144:107:1"
           },
@@ -1505,7 +1505,7 @@
               ],
               "name": "updateContractStatusToComplete",
               "payable": false,
-              "scope": 637,
+              "scope": 640,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1517,7 +1517,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "contractAddress",
-                      "scope": 636,
+                      "scope": 639,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -1530,17 +1530,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 618,
+                        "id": 621,
                         "name": "ElementaryTypeName",
                         "src": "1297:7:1"
                       }
                     ],
-                    "id": 619,
+                    "id": 622,
                     "name": "VariableDeclaration",
                     "src": "1297:23:1"
                   }
                 ],
-                "id": 620,
+                "id": 623,
                 "name": "ParameterList",
                 "src": "1296:25:1"
               },
@@ -1551,7 +1551,7 @@
                   ]
                 },
                 "children": [],
-                "id": 621,
+                "id": 624,
                 "name": "ParameterList",
                 "src": "1329:0:1"
               },
@@ -1586,11 +1586,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 530,
+                                  "referencedDeclaration": 533,
                                   "type": "mapping(address => enum ContractRepo.ContractStatus)",
                                   "value": "contractMapping"
                                 },
-                                "id": 622,
+                                "id": 625,
                                 "name": "Identifier",
                                 "src": "1339:15:1"
                               },
@@ -1600,16 +1600,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 619,
+                                  "referencedDeclaration": 622,
                                   "type": "address",
                                   "value": "contractAddress"
                                 },
-                                "id": 623,
+                                "id": 626,
                                 "name": "Identifier",
                                 "src": "1355:15:1"
                               }
                             ],
-                            "id": 624,
+                            "id": 627,
                             "name": "IndexAccess",
                             "src": "1339:32:1"
                           },
@@ -1631,26 +1631,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 526,
+                                  "referencedDeclaration": 529,
                                   "type": "type(enum ContractRepo.ContractStatus)",
                                   "value": "ContractStatus"
                                 },
-                                "id": 625,
+                                "id": 628,
                                 "name": "Identifier",
                                 "src": "1374:14:1"
                               }
                             ],
-                            "id": 626,
+                            "id": 629,
                             "name": "MemberAccess",
                             "src": "1374:23:1"
                           }
                         ],
-                        "id": 627,
+                        "id": 630,
                         "name": "Assignment",
                         "src": "1339:58:1"
                       }
                     ],
-                    "id": 628,
+                    "id": 631,
                     "name": "ExpressionStatement",
                     "src": "1339:58:1"
                   },
@@ -1694,16 +1694,16 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 523,
+                                  "referencedDeclaration": 526,
                                   "type": "address[] storage ref",
                                   "value": "completedContracts"
                                 },
-                                "id": 629,
+                                "id": 632,
                                 "name": "Identifier",
                                 "src": "1407:18:1"
                               }
                             ],
-                            "id": 631,
+                            "id": 634,
                             "name": "MemberAccess",
                             "src": "1407:23:1"
                           },
@@ -1713,41 +1713,41 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 619,
+                              "referencedDeclaration": 622,
                               "type": "address",
                               "value": "contractAddress"
                             },
-                            "id": 632,
+                            "id": 635,
                             "name": "Identifier",
                             "src": "1431:15:1"
                           }
                         ],
-                        "id": 633,
+                        "id": 636,
                         "name": "FunctionCall",
                         "src": "1407:40:1"
                       }
                     ],
-                    "id": 634,
+                    "id": 637,
                     "name": "ExpressionStatement",
                     "src": "1407:40:1"
                   }
                 ],
-                "id": 635,
+                "id": 638,
                 "name": "Block",
                 "src": "1329:125:1"
               }
             ],
-            "id": 636,
+            "id": 639,
             "name": "FunctionDefinition",
             "src": "1257:197:1"
           }
         ],
-        "id": 637,
+        "id": 640,
         "name": "ContractDefinition",
         "src": "61:1396:1"
       }
     ],
-    "id": 638,
+    "id": 641,
     "name": "SourceUnit",
     "src": "0:1457:1"
   },
@@ -1763,5 +1763,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-20T16:15:25.735Z"
+  "updatedAt": "2018-03-20T23:00:43.340Z"
 }

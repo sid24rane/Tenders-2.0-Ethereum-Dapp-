@@ -243,8 +243,60 @@ function getContractInfo(contractAddress) {
 }
 //getAllBidsOfAn ExpiredTender ==> return 
 function getAllBids(expiredTenderAddress) {
-    
+    var bidInfo = [];
+    expiredTenderAddress.getProposalCount.call({gas:500000}, (err, count) => {
+        if(err){
+            return false;
+        }
+        for(var index = 0; index < count; index++){
+            expiredTenderAddress.getProposal.call(index, {gas:500000}, (err, res)=>{
+                if(err){
+                    console.log(err);
+                    return;
+                }
+                bidInfo.push(res);
+            });
+
+        }
+        return bidInfo;
+    });
 }
 
 //get All Proposals of a Bid
-//verify
+function getProposalInfo(expiredTenderAddress, index){
+    var bidInfo;
+    expiredTenderAddress.getProposal.call(index, {gas:500000}, (err,res)=> {
+        if(err){
+            console.log(err);
+            return;
+        }
+        bidInfo = res;
+        console.log("getProposalInfo : " + JSON.stringify(res));
+    });
+    return bidInfo;
+}
+
+//verify Task
+function verifyTask(contractAddress, index, flag) {
+    contractAddress.verifyTask.call(index, {gas:500000}, (err, res) => {
+        if(err){
+            console.log(err);
+            return false;
+        }
+        if(res){
+            console.log("verification done");
+            if(flag){
+                //update to past contracts
+                ContractRepoInstance.updateContractStatusToComplete.call(contractAddress, {gas:400000}, (err,res)=>{
+                    if(err){
+                        console.log(err);
+                        return false;
+                    }
+                    console.log(res);
+                    return true;
+                });
+            }
+            return true;
+        }
+    })
+}
