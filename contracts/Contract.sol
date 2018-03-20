@@ -136,6 +136,14 @@ contract Contract {
         constraints, tasks);
     }
 
+    function getContractName() public constant returns (string){
+        return contractName;
+    }
+
+    function getCompletionDate() public constant returns (uint){
+        return completionDate;
+    }
+
     function getNumberOfTasks() public constant returns (uint) {
         return tasks.length;
     }
