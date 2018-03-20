@@ -32,7 +32,15 @@ function acceptGovernmentOfficer(officerAddress, verifierAddress) {
                 return 0;
             }
             console.log("Officer updated with accept status");
-            return 1;
+
+            verifierAddress.verifyGovernmentOfficer.call(officerAddress, {gas:500000},(err, res) => {
+                if(err){
+                    console.log(err);
+                    return 0;
+                }
+                console.log("Verifier updated with accept status");
+                return 1;
+            });
         });
     });
 }
@@ -65,20 +73,27 @@ function getUnverifiedContractors() {
     
 }
 
-function acceptContractor(officerAddress, verifierAddress) {
-    ContractorsRepoInstance.verifyContractor.call(officerAddress, verifierAddress, {gas:50000}, (err,res)=>{
+function acceptContractor(contractorAddress, verifierAddress) {
+    ContractorsRepoInstance.verifyContractor.call(contractorAddress, verifierAddress, {gas:50000}, (err,res)=>{
         if(err){
             console.log(err);
             return 0;
         }
         console.log("contractor Repo updated with accept status");
-        officerAddress.updateOfficerVerifiedStatus.call({gas:50000}, (err,res)=>{
+        contractorAddress.updateOfficerVerifiedStatus.call({gas:50000}, (err,res)=>{
             if(err){
                 console.log(err);
                 return 0;
             }
             console.log("contractor updated with accept status");
-            return 1;
+            verifierAddress.verifyContractor.call(contractorAddress, {gas:500000},(err, res) => {
+                if(err){
+                    console.log(err);
+                    return 0;
+                }
+                console.log("Verifier updated with accept contractor status");
+                return 1;
+            });
         });
     });
 }

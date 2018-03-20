@@ -1,11 +1,4 @@
-var GovernmentOfficerRepo = "";
-var ContractorRepo = "";
-var TenderRepo = "";
-var ContractRepo = "";
-var FactoryGovernmentOfficer = "";
-var FactoryContractor = "";
-var FactoryTender = "";
-var FactoryContract = "";
+
 
 var governmentOfficerWalletAddress;
 var governmentOfficerNodeAddress;
@@ -16,19 +9,6 @@ if (typeof web3 !== 'undefined') {
     // set the provider you want from Web3.providers
     web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
-
-var FactoryGovernmentOfficerContract = web3.eth.contract(FactoryGovernmentOfficerAbi);
-var FactoryGovernmentOfficerInstance = FactoryGovernmentOfficerContract.at(FactoryGovernmentOfficer);
-
-var GovernmentOfficerRepoContract = web3.eth.contract(GovernmentOfficerRepoAbi);
-var GovernmentOfficerRepoInstance = GovernmentOfficerRepoContract.at(GovernmentOfficerRepo); 
-
-var TenderRepoContract = web3.eth.contract(TenderRepoAbi);
-var TenderRepoInstance = TenderRepoContract.at(TenderRepo);
-
-var FactoryTenderContract = web3.eth.contract(FactoryTenderAbi);
-var FactoryTenderInstance = FactoryTenderContract.at(FactoryTender);
-
 
 
 function register = (name, email, walletAddress, employeeId, contact) => {

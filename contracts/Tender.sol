@@ -6,10 +6,10 @@ contract Tender {
     address public governmentOfficerAddress;
     string public tenderName; 
     string public tenderId;
-    string public organisationChain;
-    string public tenderRefNum;
-    string public tenderType;
-    string public tenderCategory;
+    //string public organisationChain;
+    //string public tenderRefNum;
+    //string public tenderType;
+    //string public tenderCategory;
     uint public bidSubmissionClosingDate;
     uint public bidOpeningDate;
     uint public covers;
@@ -43,15 +43,15 @@ contract Tender {
     }
 
     function setTenderBasic(address _governmentOfficerAddress, string _tenderName, string _tenderId, 
-    string _organisationChain, string _tenderRefNum, string _tenderType, string _tenderCategory,
+    //string _organisationChain, string _tenderRefNum,
     uint _bidSubmissionClosingDate, uint _bidOpeningDate, uint _covers) public {
         governmentOfficerAddress = _governmentOfficerAddress;   
         tenderName = _tenderName;
         tenderId = _tenderId;
-        organisationChain = _organisationChain;
-        tenderRefNum = _tenderRefNum;
-        tenderType = _tenderType;
-        tenderCategory = _tenderCategory;
+        //organisationChain = _organisationChain;
+        //tenderRefNum = _tenderRefNum;
+        // tenderType = _tenderType;
+        // tenderCategory = _tenderCategory;
         bidSubmissionClosingDate = _bidSubmissionClosingDate;
         bidOpeningDate = _bidOpeningDate;
         covers = _covers;
@@ -66,10 +66,10 @@ contract Tender {
         constraints = _constraints;
     }
 
-    function getTenderBasic() public view returns (address, string, string, string, string, string, string,
+    function getTenderBasic() public view returns (address, string, string,
     uint, uint, uint) {
-        return (governmentOfficerAddress, tenderName, tenderId, organisationChain, tenderRefNum, 
-        tenderType, tenderCategory, bidSubmissionClosingDate, bidOpeningDate, covers);
+        return (governmentOfficerAddress, tenderName, tenderId, 
+        bidSubmissionClosingDate, bidOpeningDate, covers);
     }
 
     function getTenderAdvanced() public view returns (string[], string[], uint[], string[]) {
@@ -77,7 +77,7 @@ contract Tender {
     }
 
     function bid(address _contractorAddress,
-    string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public {
+    string[] _quotationClause, uint[] _quotationAmount, string[] _constraintDocuments) public returns (bool) {
         ContractorProposal storage temp = allContractorProposals[allContractorProposals.length++];
         temp.contractorAddress = _contractorAddress;
         for (uint i=0; i < _quotationClause.length; i++) {
@@ -89,6 +89,7 @@ contract Tender {
             temp.constraintDocuments[i] = _constraintDocuments[i];
         }
         temp.status = ProposalStatus.unverified;
+        return true;
     }  
 
     function getBiddindCloseDate() public returns (uint) {
