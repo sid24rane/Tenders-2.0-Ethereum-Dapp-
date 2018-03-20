@@ -14,7 +14,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/util.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/stats.js"></script></head>
+<script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/util.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/32/5a/stats.js"></script>
+<script src="registeration.js"></script></head>
 
 <body class="off-canvas-sidebar">
     <nav class="navbar navbar-primary navbar-transparent navbar-absolute">
@@ -55,7 +56,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="#" action="register2.html#">
+
+
+
+                            <div  name = "registeration" method="#" action="register2.html#">
                                 <div class="card card-login">
                                     <div class="card-header text-center" data-background-color="rose">
                                         <h4 class="card-title">Register</h4>
@@ -68,20 +72,15 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <p class="category text-center">
-                                        Or Be Classical
-                                    </p>
-
-
-
-                                    <div class="card-content" id="officer">
+                                    
+                                    <form name="officerform" class="card-content" id="officer">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">face</i>
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name = "name" required>
                                             <span class="material-input"></span></div>
                                         </div>
                                         <div class="input-group">
@@ -90,7 +89,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Email</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" class="form-control" name="email" required>
                                             <span class="material-input"></span></div>
                                         </div>
                                         <div class="input-group">
@@ -99,7 +98,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Wallet Address</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" name="address" required>
                                             <span class="material-input"></span></div>
                                         </div>
                                          <div class="input-group">
@@ -108,7 +107,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Employee Id</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="empid" required>
                                             <span class="material-input"></span></div>
                                         </div>
                                          <div class="input-group">
@@ -117,20 +116,20 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Contact</label>
-                                                <input type="tel" class="form-control">
+                                                <input type="tel" class="form-control" name="contact" required>
                                             <span class="material-input"></span></div>
                                         </div>
-                                    </div>
+                                    </form>
 
 
-                                       <div class="card-content" id="bidder" style="display: none;">
+                                       <form name="bidderform" class="card-content" id="bidder" style="display: none;">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <i class="material-icons">face</i>
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="name" >
                                             <span class="material-input"></span></div>
                                         </div>
                                         <div class="input-group">
@@ -139,7 +138,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Email</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" class="form-control" name="email" >
                                             <span class="material-input"></span></div>
                                         </div>
                                         <div class="input-group">
@@ -148,7 +147,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Wallet Address</label>
-                                                <input type="password" class="form-control">
+                                                <input type="password" class="form-control" name="address" >
                                             <span class="material-input"></span></div>
                                         </div>
                                          <div class="input-group">
@@ -157,7 +156,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">PAN Number</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name="pan" >
                                             <span class="material-input"></span></div>
                                         </div>
                                          <div class="input-group">
@@ -166,7 +165,7 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Contact</label>
-                                                <input type="tel" class="form-control">
+                                                <input type="tel" class="form-control" name="contact" >
                                             <span class="material-input"></span></div>
                                         </div>
                                           <div class="input-group">
@@ -175,18 +174,22 @@
                                             </span>
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">GST Number</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" class="form-control" name ="gst">
                                             <span class="material-input"></span></div>
                                         </div>
-                                    </div>
+                                    </form>
 
 
 
                                     <div class="footer text-center">
-                                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg">Get Started</button>
+                                        <button type="submit" class="btn btn-rose btn-simple btn-wd btn-lg" onclick="register(event)">Get Started</button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -221,6 +224,7 @@
     });    
 
 </script>
+<script src="registeration.js"></script>
 <script src="../../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../assets/js/material.min.js" type="text/javascript"></script>
@@ -265,15 +269,6 @@
 <script src="../../assets/js/material-dashboard.js%3Fv=1.2.1"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../../assets/js/demo.js"></script>
-<script type="text/javascript">
-    $().ready(function() {
-        demo.checkFullPageBackgroundImage();
 
-        setTimeout(function() {
-            // after 1000 ms we add the class animated to the login/register card
-            $('.card').removeClass('card-hidden');
-        }, 700)
-    });
-</script>
 
 </body></html>

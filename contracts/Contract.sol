@@ -5,13 +5,24 @@ pragma experimental ABIEncoderV2;
 contract Contract {   
     address public governmentOfficerAddress;
     address public contractorAddress;
+    string public tenderId;
+    string public organisationChain;
+    string public tenderRefNum;
+    string public tenderType;
+    string public tenderCategory;
+    uint public creationDate;
+    uint public completionDate;
+    uint public covers;
+    string[] public quotationClauses;
+    uint[] public quotationAmount;
+    string[] public constraints;
+    uint finalQuotationAmount;
     //address public specialOfficerAddress;
 
     bool public governmentOfficerVerified;
     //bool public specialOfficerVerified;
 
     string public contractName;
-    string public contractDocumentUrl;
 
     mapping (uint=>Task) private taskIndexMapping;
     
@@ -58,21 +69,43 @@ contract Contract {
 
     }
     
-    function setContract (
+    function setContractBasic (
         address _governmentOfficerAddress, 
         address _contractorAddress, 
-        //address _specialOfficerAddress, 
+        string _tenderId,
+        string _organisationChain,
+        string _tenderRefNum,
+        string _tenderType,
+        string _tenderCategory,
+        uint _creationDate,
+        uint _completionDate,
+        uint _covers) public payable {
+        governmentOfficerAddress = _governmentOfficerAddress;
+        contractorAddress = _contractorAddress;
+        tenderId = _tenderId;
+        organisationChain = _organisationChain;
+        tenderRefNum = _tenderRefNum;
+        tenderType = _tenderType;
+        tenderCategory = _tenderCategory;
+        creationDate = _creationDate;
+        completionDate = _completionDate;
+        covers = _covers;
+    }
+    function setContractAdvanced (
         string _contractName, 
-        string _contractDocumentUrl, 
+        uint _finalQuotationAmount,
+        string[] _quotationClauses,
+        uint[] _quotationAmount,
+        string[] _constraints,
         string[] _taskDescription, 
         uint[] _deadlineForEachTask, 
         uint[] _amountForEachTask, 
         uint _reviewtime) public payable {
-        governmentOfficerAddress = _governmentOfficerAddress;
-        contractorAddress = _contractorAddress;
-        //specialOfficerAddress = _specialOfficerAddress;
         contractName = _contractName;
-        contractDocumentUrl = _contractDocumentUrl;
+        finalQuotationAmount = _finalQuotationAmount;
+        quotationClauses = _quotationClauses;
+        quotationAmount = _quotationAmount;
+        constraints = _constraints;
         uint totalAmount = 0;
         for (uint i=0; i < _taskDescription.length; i++) {
             Task storage task = tasks[tasks.length++];
@@ -86,7 +119,29 @@ contract Contract {
         if (totalAmount > msg.value*(1 ether)) {
             revert();
         }
+        if (totalAmount > finalQuotationAmount) {
+            revert();
+        }
         //ContractDeployed();
+    }
+
+    function getContractBasic() public view returns ( address, address, string, string, string, string, string,
+    uint, uint, uint ) {
+        return (governmentOfficerAddress, contractorAddress, tenderId, organisationChain, tenderRefNum, 
+        tenderType, tenderCategory, creationDate, completionDate, covers);
+    }
+
+    function getContractAdvanced() public view returns (string, uint, string[], uint[], string[], Task[]) {
+        return (contractName, finalQuotationAmount, quotationClauses, quotationAmount, 
+        constraints, tasks);
+    }
+
+    function getContractName() public constant returns (string){
+        return contractName;
+    }
+
+    function getCompletionDate() public constant returns (uint){
+        return completionDate;
     }
 
     function getNumberOfTasks() public constant returns (uint) {

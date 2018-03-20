@@ -29,6 +29,15 @@ Vue.component('existing-tenders', {
 
 Vue.component('place-bid', {
   template: '#place-bid',
+  data:function(){
+    return{
+      name:'lol',
+        
+    }
+  },
+  mounted(){
+
+  },
   methods:{
     existingTenders : function(){
       this.$parent.currentView = 'existing-tenders';
