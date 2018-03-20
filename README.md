@@ -83,7 +83,7 @@ Then you have to map the addresses of the the contracts deployed in the web3_mai
 * [Ethereum](https://www.ethereum.org/) - Used for smart contract deployment
 
 ## Screenshots
-* ![Creating Tender](https://drive.google.com/file/d/1YkzAwpIL82JQEZD4dpQGUOWzkg0zif41/view?usp=sharing)
+* ![Creating Tender](https://lh5.googleusercontent.com/bx5oHEspBCTidvZ_Cy8I_NbYy1GkBlRj4EgzUZQfulRnINSK0YxmxvdfnSocP5Y_MgJJ9UDXkFSilZFIcqmS=w1366-h612-rw)
 * ![Existing Tender](https://drive.google.com/file/d/1tzfF90STjzXI0abY2OV2M0dtxL3esUZZ/view?usp=sharing)
 * ![Expired Tender](https://drive.google.com/file/d/1xY2TpjOIx6WRvx8Lh2LSQASXMcCggFTe/view?usp=sharing)
 * ![Ongoing Contracts](https://drive.google.com/file/d/1BJQuur6UeRf2ock5pbPI_j_I-IC41xiQ/view?usp=sharing)
