@@ -130,10 +130,11 @@ contract Tender {
         isProposalVerified[contractorAddress] = ProposalStatus.rejected;
     }
 
-    function getProposal(uint256 index) public view returns (address, uint256, ProposalStatus) {
+    function getProposal(uint256 index) public view returns (address, uint256, string[], uint256[], ProposalStatus) {
         if (index > allContractorProposals.length) revert();
         return (allContractorProposals[index].contractorAddress, 
-        allContractorProposals[index].proposalAmount, allContractorProposals[index].status);
+        allContractorProposals[index].proposalAmount, allContractorProposals[index].quotationClause,
+        allContractorProposals[index].quotationAmount, allContractorProposals[index].status);
     }
 
     function getVerifiedProposals(uint index) public returns (string[], string[][], address, uint[]) {

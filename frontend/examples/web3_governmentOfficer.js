@@ -46,6 +46,17 @@ function createTender(governmentOfficerNodeAddress, tenderName, id,
     return success;
 }
 
+function createContract(tenderAddress, contractorAddress, amountForEachTask){
+    tenderAddress.getTenderInfo.call({gas:500000}, (err,res) => {
+        var basic = res.basic;
+        var advanced = res.advanced;
+
+        if (updateTenderToContract(basic.governmentOfficerAddress, contractorAddress, basic.tenderName, 
+            basic.tenderId, 10000, advanced.constraints, 100000, advanced.taskName, 
+            advanced.taskDays, amountForEachTask, 0)){ return true;}else return false;
+    });
+}
+
 function updateTenderToContract (governmentOfficerNodeAddress,
     contractorAddress, contractName, tenderId, 
     completionTime, 
@@ -55,8 +66,6 @@ function updateTenderToContract (governmentOfficerNodeAddress,
     deadlineForEachTask, 
     amountForEachTask, 
     reviewtime) {
-
-    var success = false;
     let governmentOfficerNodeAddress = GovernmentOfficerRepo.getNodeAddress.call(governmentOfficerWalletAddress);
     FactoryContractInstance.createContract.sendTransaction(governmentOfficerNodeAddress, contractorAddress, contractName, 
         tenderId,completionTime, constraints, finalQuotationAmount, taskDescription, deadlineForEachTask, 
@@ -64,7 +73,7 @@ function updateTenderToContract (governmentOfficerNodeAddress,
         {gas:500000}).then((err, address) => {
             if(err) {
                 console.log(err);
-                return;
+                return false;
             }
             console.log("New contract Address : "+ address);
             ContractRepoInstance.addToContracts.call(address, {gas:500000}).then((err, res)=>{
@@ -75,13 +84,12 @@ function updateTenderToContract (governmentOfficerNodeAddress,
             contractorAddress.addToContracts.sendTransaction(address, {gas:500000}, (err, res) => {
                 if(err) {
                     console.log(err);
-                    return;
+                    return false;
                 }
                 console.log("Added new contract to contractor : " + res);
             })
-            success = true;
+           return true;
         });
-    return success;
 }
 
 //ACTIVE CONTRACTS IN GUI
