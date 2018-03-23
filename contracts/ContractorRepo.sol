@@ -9,14 +9,22 @@ contract ContractorRepo {
     
     mapping (address=>bool) verifiedStatus; //false => unverified, true => verified
     mapping (address=>address) contratorToVerifier;
+    mapping (address=>address) public walletAddressToNode;
+
 
     function ContractorRepo() public {
 
     }
 
-    function newContractor(address contractorAddress) public {
-        contractors.push(contractorAddress);
-        verifiedStatus[contractorAddress] = false;
+    function newContractor(address walletAddress, address nodeAddress) public returns (bool) {
+        contractors.push(nodeAddress);
+        verifiedStatus[nodeAddress] = false;
+        mapWalletAddressToNode(walletAddress,nodeAddress);
+        return true;
+    }
+
+    function mapWalletAddressToNode(address walletAddress, address nodeAddress) public {
+        walletAddressToNode[walletAddress] = nodeAddress;
     }
 
     function verifyContractor(address contractorAddress, address verifierAddress) public {

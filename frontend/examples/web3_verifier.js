@@ -49,9 +49,6 @@ function rejectGovernmentOfficer() {
     return 1;
 }
 
-
-
-
 function getUnverifiedContractors() {
     var unverifiedContractorsInfo = [];
     ContractorsRepoInstance.getContractorsCount.call({gas:500000}, (err, length)=> {

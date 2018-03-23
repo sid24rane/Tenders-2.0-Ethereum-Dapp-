@@ -23,6 +23,10 @@ contract TenderRepo {
         return true;
     }
 
+    function getTenderStatus(address tenderAddress) public returns (TenderStatus) {
+        return tenderMapping[tenderAddress];
+    }
+
     function getAllTenders() public view returns (address[]) {
         //to be used by verifier
         return tenders;

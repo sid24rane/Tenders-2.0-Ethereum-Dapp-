@@ -106,30 +106,30 @@ contract Contract {
         //ContractDeployed();
     }
 
-    function getContractBasic() public view returns ( address, address, string,
+    function getContractBasic() public view returns (string, address, address, string,
     uint, uint) {
-        return (governmentOfficerAddress, contractorAddress, tenderId,
+        return (contractName, governmentOfficerAddress, contractorAddress, tenderId,
         creationDate, completionDate);
     }
 
-    function getContractAdvanced() public view returns (string, uint, string[], Task[]) {
+    function getContractAdvanced() public view returns (string, uint, string[]) {
         return (contractName, finalQuotationAmount, 
-        constraints, tasks);
+        constraints);
     }
 
-    function getContractName() public constant returns (string){
+    function getContractName() public view returns (string) {
         return contractName;
     }
 
-    function getCompletionDate() public constant returns (uint){
+    function getCompletionDate() public view returns (uint) {
         return completionDate;
     }
 
-    function getNumberOfTasks() public constant returns (uint) {
+    function getNumberOfTasks() public view returns (uint) {
         return tasks.length;
     }
 
-    function getTask(uint index) public constant returns(string, uint, uint, TaskStatus, uint) {
+    function getTask(uint256 index) public view returns (string, uint, uint, TaskStatus, uint) {
         return (tasks[index].description, tasks[index].deadlineTime, tasks[index].amount,
         tasks[index].status, tasks[index].completionTime);
     }
@@ -168,7 +168,7 @@ contract Contract {
         // }
     }
 
-    function withdrawForTask(uint _taskIndex) public onlyContractor {
+    function withdrawForTask(uint _taskIndex) public onlyContractor returns (bool) {
         if (_taskIndex >= tasks.length) revert();
         Task storage task = tasks[_taskIndex];
 
@@ -178,5 +178,6 @@ contract Contract {
         uint amount = task.amount*(1 ether);
         task.status = TaskStatus.contractorPaid;
         msg.sender.transfer(amount);
+        return true;
     }
 }

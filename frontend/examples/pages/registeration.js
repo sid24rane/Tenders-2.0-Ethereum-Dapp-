@@ -31,29 +31,25 @@ function register(e){
 			gst : bgst
 		};
 
-	var toSend;
-
 	if(officername!=""||officername!=null){
 		
-		toSend = JSON.stringify(officerRegDetails);
-		
+		if(registerGovernmentOfficer(officerRegDetails.name, officerRegDetails.email, 
+			officerRegDetails.address, officerRegDetails.empid, officerRegDetails.contact)){
+				console.log("Govt officer registered");
+		}else{
+			console.log("error!");
+		}		
 
 	}else if(biddername!=""||biddername!=null){
 
-
-		toSend = JSON.stringify(bidderRegDetails);
-
+		if(registerContractor(bidderRegDetails.name, bidderRegDetails.email, 
+			bidderRegDetails.address, bidderRegDetails.pan, bidderRegDetails.contact,bidderRegDetails.gst)){
+				console.log("contractor registered");
+		}else{
+			console.log("error!");
+		}	
 
 	}else{
 		alert("form must not be empty");
 	}
-
-
-
-
-	
-
-	console.log(toSend);
-
-	
 }

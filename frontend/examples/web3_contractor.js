@@ -1,3 +1,22 @@
+var contractorWalletAddress;
+var contractorNodeAddress;
+
+function registerContractor(name, email, walletAddress, pan, contact, gst) {
+    var success = false;
+    FactoryContractorInstance.registerNewContractor.call(walletAddress,email,name,contact,pan,gst,{gas:30000})
+    .then((err, nodeAddress) => {
+        if(err) console.log(err);
+        console.log("New Contractor Address : " + nodeAddress);
+        success = true;
+        contractorNodeAddress = nodeAddress;
+        ContractorRepoInstance.newContractor.call(contractorNodeAddress, nodeAddress, {gas:500000}).then((err,res)=>{
+            if(err) console.log(err);
+            console.log(" Added to MegaContractorRepo : " + res);
+        })
+    })
+    return success;
+}
+
 var existingTenderInfo = [];
 function getExistingTenders(){
     //this func returns all tenders on which Contractor can bid;
@@ -44,7 +63,10 @@ function placedBids(contractorAddress) {
                         return;
                     }
                     console.log(JSON.stringify(result));
-                    placedBidsInfo.push(result);
+                    var tempObj = {};
+                    tempObj.tenderInfo = result;
+                    tempObj.status = TenderRepoInstance.getTenderStatus.call(res[i],{gas:500000});
+                    placedBidsInfo.push(tempObj);
                 });
             }    
         }
@@ -95,7 +117,10 @@ function getActiveContractsBasicInfo(contractorAddress) {
                 activeContractsBasicInfo.push(getContractInfo(contracts[i], 0));
             }
         }
-        return activeContractsBasicInfo;
+        var tempObj = {};
+        tempObj.allInfo = activeContractsBasicInfo;
+        tempObj.activeContracts = activeContracts;
+        return tempObj;
     });
 }
 
@@ -103,6 +128,7 @@ function getActiveContractsBasicInfo(contractorAddress) {
 function getContractInfo(contractAddress, value) {
     var contractBasicInfo;
     var contractAdvancedInfo;
+    var tasks;
 
     contractAddress.getContractBasic.call({gas : 5000000}, (err, res) => {
         if(err){
@@ -124,16 +150,24 @@ function getContractInfo(contractAddress, value) {
             return contractAdvancedInfo;
         }
     });
-    //return both the params
+
     var tempObject = {};
     tempObject.basic = contractBasicInfo;
     tempObject.advanced = contractAdvancedInfo;
+
+    var count = contractAddress.getNumberOfTasks.call({gas:500000});
+    for(var i=0; i < count; i++){
+        var task = contractAddress.getTask.call(i, {gas:5000000});
+        tempObject.tasks.push(task);
+    }
+
     console.log("Contract Basic Obj : " + JSON.stringify(tempObject));
     return tempObject;
 }
 
-function placeBid(tenderAddress, proposalValues){
-    tenderAddress.bid.call(contractorAddress, quotationClause, quotationAmount, documents, {gas:50000000}, 
+function placeBid(tenderAddress, quotation){
+    
+    tenderAddress.bid.call(contractorAddress, quotation.quotationClause, quotation.quotationAmount, documents, {gas:50000000}, 
     (err,res) => {
         if(err){
             console.log(err);
@@ -149,4 +183,26 @@ function placeBid(tenderAddress, proposalValues){
             return true;
         })    
     });
+}
+
+function markTaskAsCompleted(contractAddress, index){
+    contractAddress.taskCompletedByContractor.sendTransaction(index, {gas:500000}, (err, res) => {
+        if(err){
+            console.log(err);
+            return false;
+        }
+        console.log("Withdrawn from contact successfully : " + res);
+    });
+    return true;
+}
+
+function withdrawMoneyForTask(contractAddress, index) {
+    contractAddress.withdrawForTask.sendTransaction(index, {gas:500000}, (err,res)=>{
+        if(err){
+            console.log(err);
+            return false;
+        }
+        console.log("Withdrawn from contact successfully : " + res);
+    });
+    return true;
 }
