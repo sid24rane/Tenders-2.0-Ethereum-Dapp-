@@ -1,5 +1,7 @@
 var governmentOfficerNodeAddress = "";
 var current_tender_address = "";
+var current_bid_index = 0;
+var current_contractor_address="";
 
 Vue.component('create-tender', {
   template: '#create-tender',
@@ -125,6 +127,7 @@ Vue.component('ongoing-contracts', {
   template: '#ongoing-contracts'
 })
 
+
 Vue.component('active-contracts', {
   template: '#active-contracts',
   data: function(){
@@ -147,6 +150,7 @@ Vue.component('active-contracts', {
   }
 })
 
+
 Vue.component('ongoing-contracts-details', {
   template: '#ongoing-contracts-details',
   data :function(){
@@ -162,20 +166,67 @@ Vue.component('ongoing-contracts-details', {
 })
 
 
+
 Vue.component('bidding-list', {
   template: '#bidding-list',
+  data:function(){
+    return{
+      biddings:[]
+    }
+  },
+  mounted(){
+      var res = getAllBids(current_tender_address);
+      var len = res.length;
+      for(var i=0;i<len;i++){
+        var obj = res[i];
+        this.biddings.push({
+            index:i,
+            contractorAddress:obj.contractorAddress,
+            proposalAmount:obj.proposalAmount,
+            status:obj.status
+        });
+      }
+  },
   methods: {
-    proposalDetails : function(){
+    proposalDetails : function(event){
+      event.preventDefault();
+      var bidIndex = event.srcElement.id;
+      console.log(bidIndex);
       this.$parent.currentView = 'proposal-details';
+      current_contractor_address = biddings[bidIndex].contractorAddress;
+      current_bid_index = bidIndex;
     }
   }
 })
 
+
+
 Vue.component('proposal-details', {
   template: '#proposal-details',
+  data:function(){
+    return{
+      clauses:[]
+    }
+  },
+  mounted(){
+    var res = getProposalInfo(current_tender_address,current_bid_index);
+    var quotationName = res.quotationClause;
+    var quotationAmount = res.quotationAmount;
+    var len = quotationAmount.length;
+    for(var i=0;i<len;i++){
+      this.clauses.push({
+        name:quotationName[i],
+        amount:quotationAmount[i]
+      });
+    }
+  },
   methods : {
-    contractDetails: function(){
+    contractDetails: function(event){
+      event.preventDefault();
+      var tender_address = event.srcElement.id;
+      console.log(tender_address);
       this.$parent.currentView = 'contract-details';
+      current_tender_address = tender_address;
     },
     viewDocs: function(){
       this.$parent.currentView= 'view-submitted-docs';
@@ -185,12 +236,65 @@ Vue.component('proposal-details', {
 
 Vue.component('contract-details', {
   template: '#contract-details',
+  data:function(){
+      name:'',
+      id:'',
+      coverCount:0,
+      milestoneCount:0,
+      bidSubmissionClosingDate:'',
+      bidOpeningDate:'',
+      contractStartingDate:new Date(Date.now()),
+      clauses:[],
+      contractorAddress:current_contractor_address
+      milestones:[]
+  },
+  mounted(){
+    var res = getTenderInfo(current_tender_address);
+    var basic = res.basic;
+    var adv = res.advanced;
+    this.name = basic.tenderName;
+    this.id = basic.tenderId;
+    this.coverCount = basic.covers;
+    this.milestoneCount = advanced.taskName.length;
+    this.bidSubmissionClosingDate = basic.bidSubmissionClosingDate;
+    this.bidOpeningDate = basic.bidOpeningDate;
+    
+
+    var res = getProposalInfo(current_tender_address,current_bid_index);
+    var quotationName = res.quotationClause;
+    var quotationAmount = res.quotationAmount;
+    var len = quotationAmount.length;
+    for(var i=0;i<len;i++){
+      this.clauses.push({
+        name:quotationName[i],
+        amount:quotationAmount[i]
+      });
+    }
+
+    var tasks = advanced.taskName;
+    var tdays = advanced.taskDays;
+    var tlen = tasks.length;
+    for(var i =0;i<tlen;i++){
+      this.milestones.push({
+        name:tasks[i],
+        noOfDays:tdays[i]
+      });
+    }
+  },
   methods: {
     viewDocs: function(){
       this.$parent.currentView= 'view-submitted-docs';
     },
-    expiredTenders: function(){
+    createContract: function(event){
+      event.preventDefault();
       this.$parent.currentView = 'expired-tenders';
+      var milestoneAmounts = [];
+      // get dynamic values
+      if(updateTenderToContract(current_tender_address,current_contractor_address,milestoneAmounts)){
+        console.log('done');
+      }else{
+        console.log('error!');
+      }
     }
   }
 })

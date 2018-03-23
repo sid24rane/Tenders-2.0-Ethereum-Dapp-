@@ -395,17 +395,19 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>Contractor Address</th>
                                 <th>Amount</th>
+                                <th>Status</th>
                                 <th>View proposal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="bid in biddings">
-                                <td>{{bid.address}}</td>
-                                <td>{{bid.amount}}</td>
+                                <td>{{bid.contractorAddress}}</td>
+                                <td>{{bid.proposalAmount}}</td>
+                                <td>{{bid.status}}</td>
                                 <td >
-                                    <button type="button" rel="tooltip"class="btn btn-info" data-original-title="" title="" @click="proposalDetails">
+                                    <button type="button" rel="tooltip"class="btn btn-info" v-bind:id="bid.index" v-on:click="proposalDetails($event)">
                                         <i class="material-icons">person</i>
                                     </button>
                                 </td>
@@ -516,37 +518,6 @@
                         </div>
                     </div>
 
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Organisation Chain</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{organisationChain}}</label>
-                        </div>
-                    </div>
-
-
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Reference Number</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{referenceNumber}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Type</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{type}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Category</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{category}}</label>
-                        </div>
-                    </div>    
-
                     <div class="row">
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">No of Covers</label>
                         <div class="col-md-9">
@@ -581,13 +552,6 @@
                         <label style="color:#6d6262;" class="col-md-3 label-on-left">Contract Starting Date</label>
                         <div class="col-md-9">
                             <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{contractStartingDate}}</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label style="color:#6d6262;" class="col-md-3 label-on-left">Verifier Address</label>
-                        <div class="col-md-9">
-                            <label class="col-md-3 label-on-left" style="text-align:left;color:#AAAAAA">{{verifierAddress}}</label>
                         </div>
                     </div>
 
@@ -663,7 +627,7 @@
             <label class="col-md-3"></label> 
             <div class="col-md-9">
                 <div class="form-group form-button">
-                    <button type="submit" class="btn btn-fill btn-rose" @click="expiredTenders">Create</button>
+                    <button type="submit" class="btn btn-fill btn-rose" @click="createContract">Create</button>
                 </div>
             </div>
         </div>
