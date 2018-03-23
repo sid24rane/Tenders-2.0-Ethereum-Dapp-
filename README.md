@@ -1,6 +1,6 @@
 # TENDERS 2.0
 
-This is a platform for tender creation and contract assignment process.Through this we attempt to bring transparency in the process using a emerging Block-Chain Technology.
+DApp for tender creation and contract assignment process on the Ethereum Blockchain.
 
 ## Problem Statement
 Lack of transparency in the tendering process and assigning contracts to agencies for road development has led to unwise use of money and the spirit of speculation. 
