@@ -1,4 +1,4 @@
-# TENDER 2.0
+# TENDERS 2.0
 
 This is a platform for tender creation and contract assignment process.Through this we attempt to bring transparency in the process using a emerging Block-Chain Technology.
 
